@@ -8,7 +8,11 @@ import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -22,6 +26,7 @@ public class GymBalance extends Window{
     @Override
     public void create(Stage primaryStage) throws IOException {
         root = FXMLLoader.load(getClass().getResource("GymBalance.fxml"));
+        setGymBalance(root);
         scene = new Scene(root);
         stage = primaryStage;
         //String css = this.getClass().getResource("general.css").toExternalForm();
@@ -29,6 +34,14 @@ public class GymBalance extends Window{
         stage.setTitle("GymBalance");
         stage.setScene(scene);
         stage.show();
+    }
+    
+    private void setGymBalance(Parent root) {
+        VBox vbox = (VBox) root.getChildrenUnmodifiable().get(1);
+        String[] strs = {String.format("Gym cash balance : %-4.2f", Gym.getCashBalance()), String.format("Gym credit balance : %-4.2f", Gym.getCreditBalance()), String.format("Gym total balance : %-4.2f", Gym.getTotalBalance())};
+        for(int i = 0; i<vbox.getChildren().size(); i++) {
+            ((Label)vbox.getChildren().get(i)).setText(strs[i]);
+        }
     }
     
     public void goBack(ActionEvent event) {

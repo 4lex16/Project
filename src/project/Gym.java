@@ -19,6 +19,41 @@ import java.util.List;
 public class Gym {
     private static List<Member> memberList = new ArrayList<>();
     private static Dictionary<String, Staff> staffList = new Hashtable<>();
+    private static double cashBalance;
+    private static double creditBalance;
+
+    public static double getCashBalance() {
+        return cashBalance;
+    }
+
+    public static double getCreditBalance() {
+        return creditBalance;
+    }
+    
+    public static double getTotalBalance() {
+        return cashBalance + creditBalance;
+    }
+    
+    public static double addCash(double value) {
+        cashBalance += value;
+        return cashBalance;
+    }
+    
+    public static double removeCash(double value) {
+        cashBalance += value;
+        return cashBalance;
+    }
+    
+    public static double addCredit(double value) {
+        creditBalance += value;
+        return creditBalance;
+    }
+    
+    public static double removeCredit(double value) {
+        creditBalance += value;
+        return creditBalance;
+    }
+    
     
     
     public static List<Member> getMemberList() {

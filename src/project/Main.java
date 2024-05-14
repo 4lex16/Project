@@ -21,9 +21,7 @@ public class Main extends Application{
     public static void main(String[] args) {
         instantiateLists(); // Just instansiates with random filler.
         starttime = System.nanoTime();
-        
         launch(args);
-        
         deleteLoginToken();
         saveLists(); // not implemented yet
     }

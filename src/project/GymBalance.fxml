@@ -8,11 +8,11 @@
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.GymBalance">
    <children>
       <Button fx:id="returnButton" layoutX="274.0" layoutY="315.0" mnemonicParsing="false" onAction="#goBack" text="RETURN" />
-      <VBox alignment="CENTER" layoutX="179.0" layoutY="93.0" prefHeight="200.0" prefWidth="250.0">
+      <VBox fx:id="cashVbox" alignment="CENTER_LEFT" layoutX="246.0" layoutY="91.0" prefHeight="200.0" prefWidth="167.0">
          <children>
-            <Label text="Gym Cash Balance" />
-            <Label text="Gym Credit Balanmce" />
-            <Label text="Gym total Balance" />
+            <Label fx:id="cashLabel" />
+            <Label fx:id="creditLabel" />
+            <Label fx:id="totalLabel" />
          </children>
       </VBox>
       <Button fx:id="optionButton" layoutX="548.0" layoutY="25.0" mnemonicParsing="false" onAction="#option" text="O" />
