@@ -5,12 +5,8 @@
 package project;
 
 import java.io.IOException;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.VPos;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -46,7 +42,7 @@ public class MemberList extends Window{
         ScrollPane scrollPane = ((ScrollPane)root.getChildrenUnmodifiable().get(1));
         VBox vbox = new VBox();
         for(Member m: Gym.getMemberList()) {
-            Label label = new Label(m.toString());
+            Label label = new Label(m.previewLable());
             Button inspect = new Button("I");
             Button change = new Button("C");
             Button delete = new Button("D");

@@ -35,5 +35,7 @@ public class Member extends User{
         return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", uuid, firstName, lastName, gender, phoneNumber, email, address, password, type, memberShip, paymentMethod);
     }
     
-    
+    public String previewLable() {
+        return String.format("%s %s %s", firstName, lastName, gender);
+    }
 }

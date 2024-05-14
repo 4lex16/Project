@@ -20,7 +20,6 @@ public class Main extends Application{
      */
     public static void main(String[] args) {
         instantiateLists(); // Just instansiates with random filler.
-        System.out.println(Gym.getStaffList().keys().nextElement());
         starttime = System.nanoTime();
         
         launch(args);
@@ -54,6 +53,8 @@ public class Main extends Application{
     
     // These are functions that don't pertain to the function of the app.
     private static void instantiateLists() {
+        Staff test = new Staff(String.format("uuid"), String.format("firstname"), String.format("lastname"), String.format("M"), String.format("xxx-xxx-xxxx"), String.format("test"), String.format("address"), String.format("test"));
+        Gym.add(test);
         for(int i = 0; i<30;i++) {
             Member m = new Member(String.format("uuid%d", i), String.format("firstname%d", i), String.format("lastname%d", i), String.format("M"), String.format("xxx-xxx-xxxx%d", i), String.format("email%d@google.com", i), String.format("address%d", i), String.format("password%d", i), "regular", "cash");
             Gym.add(m);
