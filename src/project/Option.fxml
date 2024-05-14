@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.Option">
+   <children>
+      <Label fx:id="optionLabel" layoutX="282.0" layoutY="27.0" text="Option" />
+      <Button layoutX="562.0" layoutY="10.0" mnemonicParsing="false" onAction="#goBack" text="X" />
+      <VBox fx:id="optionsVbox" alignment="CENTER" layoutX="188.0" layoutY="87.0" prefHeight="257.0" prefWidth="221.0">
+         <children>
+            <Button fx:id="darkModeButton" mnemonicParsing="false" prefWidth="100.0" text="Dark Mode" />
+            <VBox fx:id="staffOptionVbox" alignment="CENTER" prefHeight="76.0" prefWidth="221.0">
+               <children>
+                  <Button fx:id="inspectButton" mnemonicParsing="false" prefWidth="100.0" text="Inspect" />
+                  <Button fx:id="changeButton" mnemonicParsing="false" prefWidth="100.0" text="Change" />
+                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefWidth="100.0" text="Logout" />
+               </children>
+            </VBox>
+            <Button fx:id="exitButton" mnemonicParsing="false" onAction="#close" prefWidth="100.0" text="Exit" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
