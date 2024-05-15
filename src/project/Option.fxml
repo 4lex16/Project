@@ -11,14 +11,10 @@
       <Button layoutX="562.0" layoutY="10.0" mnemonicParsing="false" onAction="#goBack" text="X" />
       <VBox fx:id="optionsVbox" alignment="CENTER" layoutX="188.0" layoutY="87.0" prefHeight="257.0" prefWidth="221.0">
          <children>
-            <Button fx:id="darkModeButton" mnemonicParsing="false" prefWidth="100.0" text="Dark Mode" />
-            <VBox fx:id="staffOptionVbox" alignment="CENTER" prefHeight="76.0" prefWidth="221.0">
-               <children>
-                  <Button fx:id="inspectButton" mnemonicParsing="false" prefWidth="100.0" text="Inspect" />
-                  <Button fx:id="changeButton" mnemonicParsing="false" prefWidth="100.0" text="Change" />
-                  <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefWidth="100.0" text="Logout" />
-               </children>
-            </VBox>
+            <Button fx:id="darkModeButton" mnemonicParsing="false" onAction="#darkmode" prefWidth="100.0" text="Dark Mode" />
+            <Button fx:id="inspectButton" mnemonicParsing="false" onAction="#inspect" prefWidth="100.0" text="Inspect" />
+            <Button fx:id="changeButton" mnemonicParsing="false" onAction="#change" prefWidth="100.0" text="Change" />
+            <Button fx:id="logoutButton" mnemonicParsing="false" onAction="#logout" prefWidth="100.0" text="Logout" />
             <Button fx:id="exitButton" mnemonicParsing="false" onAction="#close" prefWidth="100.0" text="Exit" />
          </children>
       </VBox>
