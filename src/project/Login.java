@@ -63,7 +63,7 @@ public class Login extends Window {
     private void createLoginToken() {
         try(FileOutputStream fos = new FileOutputStream("logedin.ser")) {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(""); // add email+password string
+            oos.writeObject(String.format("%s%s", emailField.getText(), passwordField.getText()));
         } catch(IOException ioe) {
             System.out.println("File not found");
         } catch (Exception e) {

@@ -46,9 +46,6 @@ public class Main extends Application{
         
     }
     
-    
-    
-    
     // These are functions that don't pertain to the function of the app.
     private static void instantiateLists() {
         Staff test = new Staff(String.format("uuid"), String.format("firstname"), String.format("lastname"), String.format("M"), String.format("xxx-xxx-xxxx"), String.format("test"), String.format("address"), String.format("test"));

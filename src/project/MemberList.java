@@ -5,8 +5,12 @@
 package project;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -21,14 +25,16 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class MemberList extends Window{
+public class MemberList extends Window implements Initializable{
+    
+    @FXML
+    private VBox memberVbox;
     
     public static Window goBack;
     
     @Override
     public void create(Stage primaryStage) throws IOException {
         root = FXMLLoader.load(getClass().getResource("MemberList.fxml"));
-        instantiateMemberList(root);
         scene = new Scene(root);
         stage = primaryStage;
         //String css = this.getClass().getResource("general.css").toExternalForm();
@@ -38,9 +44,8 @@ public class MemberList extends Window{
         stage.show();
     }
     
-    private void instantiateMemberList(Parent root) {
-        ScrollPane scrollPane = ((ScrollPane)root.getChildrenUnmodifiable().get(1));
-        VBox vbox = new VBox();
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
         for(Member m: Gym.getMemberList()) {
             Label label = new Label(m.previewLable());
             Button inspect = new Button("I");
@@ -48,10 +53,24 @@ public class MemberList extends Window{
             Button delete = new Button("D");
             HBox hbox = new HBox();
             hbox.getChildren().addAll(label, inspect, change, delete);
-            vbox.getChildren().add(hbox);
+            memberVbox.getChildren().add(hbox);
         }
-        scrollPane.setContent(vbox);
     }
+//    
+//    private void instantiateMemberList(Parent root) {
+//        ScrollPane scrollPane = ((ScrollPane)root.getChildrenUnmodifiable().get(1));
+//        VBox vbox = new VBox();
+//        for(Member m: Gym.getMemberList()) {
+//            Label label = new Label(m.previewLable());
+//            Button inspect = new Button("I");
+//            Button change = new Button("C");
+//            Button delete = new Button("D");
+//            HBox hbox = new HBox();
+//            hbox.getChildren().addAll(label, inspect, change, delete);
+//            vbox.getChildren().add(hbox);
+//        }
+//        scrollPane.setContent(vbox);
+//    }
     
     public void option(ActionEvent event) {
         try {
@@ -72,5 +91,7 @@ public class MemberList extends Window{
             System.out.println("File not found in Option goBack");
         }
     }
+
+    
     
 }
