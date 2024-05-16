@@ -5,7 +5,9 @@
 package project;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -22,19 +24,36 @@ public class Main extends Application{
         instantiateLists(); // Just instansiates with random filler.
         starttime = System.nanoTime();
         launch(args);
-        deleteLoginToken();
         saveLists(); // not implemented yet
     }
 
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage primaryStage) throws Exception {
         try {
-            Login login = new Login();
-            login.create(stage);
+            if(checkLoginToken()) {
+                StaffView staffView = new StaffView();
+                staffView.create(primaryStage);
+            } else {
+                Login login = new Login();
+                login.create(primaryStage);
+            }
         } catch(IOException ioe) {
             System.out.println("File not found in Main Start function");
         }
         System.out.println("time to open: " + (System.nanoTime() - starttime)/1000000 + "ms");
+    }
+    
+    private boolean checkLoginToken() {
+        String s = "";
+        try(FileInputStream fis = new FileInputStream("logedin.ser")) {
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            s = (String) ois.readObject();
+        } catch(IOException ioe) {
+            System.out.println("File not found");
+        } catch (Exception e) {
+            System.out.println("Exception Occured");
+        }
+        return Gym.getStaffList().get(s) != null;
     }
     
     private static void deleteLoginToken() {
