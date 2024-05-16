@@ -103,7 +103,6 @@ public class RegisterStaff extends Window implements Initializable{
     
     private boolean checkRegister() {
         if(firstNameField.getText().equals("") || lastNameField.getText().equals("") || genderChoiceBox.getValue().equals("") || phoneNumberField.getText().equals("") || emailField.getText().equals("")|| addressField.getText().equals("")|| passwordField.getText().equals("")) {
-            System.out.println("nigga");
             return false;
         }
         String key = emailField.getText()+passwordField.getText();

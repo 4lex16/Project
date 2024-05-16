@@ -122,7 +122,13 @@ public class Option extends Window implements Initializable{
     }
     
     public void change(ActionEvent event) {
-        System.out.println("Change");
+        try {
+            StaffChange staffChange = new StaffChange();
+            staffChange.goBack = this;
+            staffChange.create((Stage)(((Node)event.getSource()).getScene().getWindow()));
+        } catch(IOException ioe) {
+            System.out.println("File not found in Option inspect");
+        }
     }
 
     
