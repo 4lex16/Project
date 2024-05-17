@@ -22,7 +22,6 @@ public class Main extends Application{
      */
     public static void main(String[] args) {
         instantiateLists(); // Just instansiates with random filler.
-        deleteLoginToken();
         starttime = System.nanoTime();
         
         launch(args); // calls start functions btw
@@ -39,11 +38,6 @@ public class Main extends Application{
             System.out.println("File not found in Main Start function");
         }
         System.out.println("time to open: " + (System.nanoTime() - starttime)/1000000 + "ms");
-    }
-    
-    private static void deleteLoginToken() {
-        File f = new File("logedin.ser");
-        f.delete();
     }
     
     private static void saveLists() {

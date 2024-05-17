@@ -52,6 +52,7 @@ public class Login extends Window implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        deleteLoginToken();
         String[] key = isRememberMe();
         if(key!=null) {
             rememberMeCheckBox.setSelected(true);
@@ -61,21 +62,11 @@ public class Login extends Window implements Initializable{
             rememberMeCheckBox.setSelected(false);
             deleteRemeberMeToken();
         }
-        
-    }
-    
-    private String[] isRememberMe() {
-        String[] s = null;
-        try(FileInputStream fis = new FileInputStream("rememberMe.ser")) {
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            s = (String[]) ois.readObject();
-        } catch (Exception e) {}
-        return s;
     }
     
     public void login(ActionEvent event) {
         try {
-            if(checkLogin()) {
+            if(isLogin()) {
                 Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 StaffView staffView = new StaffView();
                 staffView.create(primaryStage);
@@ -88,7 +79,7 @@ public class Login extends Window implements Initializable{
         }
     }
     
-    private boolean checkLogin() {
+    private boolean isLogin() {
         String email = emailField.getText();
         String password = passwordField.getText();
         return Gym.getStaffList().get(email+password) != null;
@@ -105,6 +96,20 @@ public class Login extends Window implements Initializable{
         }
     }
     
+    private void deleteLoginToken() {
+        File f = new File("logedin.ser");
+        f.delete();
+    }
+    
+    private String[] isRememberMe() {
+        String[] s = null;
+        try(FileInputStream fis = new FileInputStream("rememberMe.ser")) {
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            s = (String[]) ois.readObject();
+        } catch (Exception e) {}
+        return s;
+    }
+    
     private void createRemeberMeToken() {
         try(FileOutputStream fos = new FileOutputStream("rememberMe.ser")) {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -118,10 +123,8 @@ public class Login extends Window implements Initializable{
     }
     
     private void deleteRemeberMeToken() {
-        try {
-            File f = new File("rememberMe.ser");
-            f.delete();
-        } catch(Exception e) {}
+        File f = new File("rememberMe.ser");
+        f.delete();
     }
 
     public void option(ActionEvent event) {
