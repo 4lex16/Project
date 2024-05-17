@@ -141,8 +141,8 @@ public class Login extends Window implements Initializable{
     public void register(ActionEvent event) {
         try {
             Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            RegisterStaff rs = new RegisterStaff();
-            RegisterStaff.goBack = this;
+            StaffRegister rs = new StaffRegister();
+            StaffRegister.goBack = this;
             rs.create(primaryStage);
         } catch(IOException ioe) {
             System.out.println("File not found in Login Option");

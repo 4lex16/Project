@@ -6,8 +6,6 @@ package project;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -17,8 +15,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -31,6 +29,9 @@ import javafx.stage.Stage;
 public class StaffList extends Window implements Initializable{
     
     @FXML
+    private ListView staffList;
+    
+    @FXML
     private VBox staffVbox;
     
     public static Window goBack;
@@ -38,7 +39,7 @@ public class StaffList extends Window implements Initializable{
     @Override
     public void create(Stage primaryStage) throws IOException {
         root = FXMLLoader.load(getClass().getResource("StaffList.fxml"));
-        instantiateStaffList(root);
+        //instantiateStaffList(root);
         scene = new Scene(root);
         stage = primaryStage;
         //String css = this.getClass().getResource("general.css").toExternalForm();
@@ -52,28 +53,11 @@ public class StaffList extends Window implements Initializable{
     public void initialize(URL location, ResourceBundle resources) {
         Enumeration<String> keys = Gym.getStaffList().keys();
         while(keys.hasMoreElements()) {
-            Staff s = Gym.getStaffList().get(keys.nextElement());
-            Label label = new Label(s.previewLable());
-            HBox hbox = new HBox();
-            hbox.getChildren().addAll(label);
-            staffVbox.getChildren().add(hbox);
+            staffList.getItems().add(keys.nextElement());
         }
+        System.out.println(staffList.getItems());
     }
-    
-    private void instantiateStaffList(Parent root) {
-          ScrollPane scrollPane = ((ScrollPane)root.getChildrenUnmodifiable().get(1));
-          VBox vbox = new VBox();
-          Enumeration<String> keys = Gym.getStaffList().keys();
-          while(keys.hasMoreElements()) {
-              Staff s = Gym.getStaffList().get(keys.nextElement());
-              Label label = new Label(s.previewLable());
-              HBox hbox = new HBox();
-              hbox.getChildren().addAll(label);
-              vbox.getChildren().add(hbox);
-          }
-          scrollPane.setContent(vbox);
-    }
-    
+
     public void option(ActionEvent event) {
         try {
             Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();

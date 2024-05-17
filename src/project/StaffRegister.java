@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class RegisterStaff extends Window implements Initializable{
+public class StaffRegister extends Window implements Initializable{
     
     @FXML
     private TextField addressField;
@@ -52,7 +52,7 @@ public class RegisterStaff extends Window implements Initializable{
     
     @Override
     public void create(Stage primaryStage) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("RegisterStaff.fxml"));
+        root = FXMLLoader.load(getClass().getResource("StaffRegister.fxml"));
         scene = new Scene(root);
         stage = primaryStage;
         //String css = this.getClass().getResource("general.css").toExternalForm();
