@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
@@ -37,5 +38,6 @@
             <Font size="18.0" />
          </font></Button>
       <PasswordField fx:id="passwordField" layoutX="141.0" layoutY="227.0" prefWidth="300.0" promptText="12345678" />
+      <CheckBox fx:id="rememberMeCheckBox" layoutX="247.0" layoutY="260.0" mnemonicParsing="false" text="Remeber Me" />
    </children>
 </AnchorPane>

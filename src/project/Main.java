@@ -22,43 +22,28 @@ public class Main extends Application{
      */
     public static void main(String[] args) {
         instantiateLists(); // Just instansiates with random filler.
+        deleteLoginToken();
         starttime = System.nanoTime();
-        launch(args);
+        
+        launch(args); // calls start functions btw
+        
         saveLists(); // not implemented yet
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
         try {
-            if(checkLoginToken()) {
-                StaffView staffView = new StaffView();
-                staffView.create(primaryStage);
-            } else {
-                Login login = new Login();
-                login.create(primaryStage);
-            }
+            Login login = new Login();
+            login.create(primaryStage);
         } catch(IOException ioe) {
             System.out.println("File not found in Main Start function");
         }
         System.out.println("time to open: " + (System.nanoTime() - starttime)/1000000 + "ms");
     }
     
-    private boolean checkLoginToken() {
-        String s = "";
-        try(FileInputStream fis = new FileInputStream("logedin.ser")) {
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            s = (String) ois.readObject();
-        } catch(IOException ioe) {
-            System.out.println("File not found");
-        } catch (Exception e) {
-            System.out.println("Exception Occured");
-        }
-        return Gym.getStaffList().get(s) != null;
-    }
-    
     private static void deleteLoginToken() {
         File f = new File("logedin.ser");
-        f.deleteOnExit();
+        f.delete();
     }
     
     private static void saveLists() {
