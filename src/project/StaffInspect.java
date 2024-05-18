@@ -47,6 +47,8 @@ public class StaffInspect extends Window implements Initializable{
     
     public static Window goBack;
     
+    public static Staff staff;
+    
     @Override
     public void create(Stage primaryStage) throws IOException {
         root = FXMLLoader.load(getClass().getResource("StaffInspect.fxml"));
@@ -61,7 +63,6 @@ public class StaffInspect extends Window implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Staff staff = getToken();
         firstNameLabel.setText(staff.getFirstName());
         lastNameLabel.setText(staff.getLastName());
         genderLabel.setText(staff.getGender());
@@ -69,19 +70,6 @@ public class StaffInspect extends Window implements Initializable{
         addressLabel.setText(staff.getAddress());
         passwordLabel.setText(staff.getPassword());
         phoneNumberLabel.setText(staff.getPhoneNumber());
-    }
-    
-    private Staff getToken() {
-        String s = "";
-        try(FileInputStream fis = new FileInputStream("logedin.ser")) {
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            s = (String) ois.readObject();
-        } catch(IOException ioe) {
-            System.out.println("File not found");
-        } catch (Exception e) {
-            System.out.println("Exception Occured");
-        }
-        return Gym.getStaffList().get(s);
     }
     
     public void goBack(ActionEvent event) {

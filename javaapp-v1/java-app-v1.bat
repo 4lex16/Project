@@ -1,0 +1,1 @@
+java --module-path "F:\College\Semester_2\Programming 2\Project\javaapp-v1\javafx-sdk-22.0.1\lib" --add-modules javafx.controls,javafx.fxml -jar "F:\College\Semester_2\Programming 2\Project\dist\Project.jar"

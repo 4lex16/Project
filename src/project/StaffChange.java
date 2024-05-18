@@ -20,7 +20,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import static project.StaffInspect.goBack;
 
 /**
  *
@@ -52,6 +51,7 @@ public class StaffChange extends Window implements Initializable{
     private TextField phoneNumberField;
     
     public static Window goBack;
+    public static Staff staff;
     
     @Override
     public void create(Stage primaryStage) throws IOException {
@@ -67,7 +67,6 @@ public class StaffChange extends Window implements Initializable{
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Staff staff = getToken();
         genderChoiceBox.getItems().addAll(genders);
         firstNameField.setText(staff.getFirstName());
         lastNameField.setText(staff.getLastName());

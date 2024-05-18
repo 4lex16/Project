@@ -7,6 +7,7 @@ package project;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -114,22 +115,35 @@ public class Option extends Window implements Initializable{
         try {
             StaffInspect staffInspect = new StaffInspect();
             StaffInspect.goBack = this;
+            staffInspect.staff = getToken();
             staffInspect.create((Stage)(((Node)event.getSource()).getScene().getWindow()));
         } catch(IOException ioe) {
             System.out.println("File not found in Option inspect");
         }
-        
     }
     
     public void change(ActionEvent event) {
         try {
             StaffChange staffChange = new StaffChange();
             staffChange.goBack = this;
+            staffChange.staff = getToken();
             staffChange.create((Stage)(((Node)event.getSource()).getScene().getWindow()));
         } catch(IOException ioe) {
             System.out.println("File not found in Option inspect");
         }
     }
 
+    private Staff getToken() {
+        String s = "";
+        try(FileInputStream fis = new FileInputStream("logedin.ser")) {
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            s = (String) ois.readObject();
+        } catch(IOException ioe) {
+            System.out.println("File not found");
+        } catch (Exception e) {
+            System.out.println("Exception Occured");
+        }
+        return Gym.getStaffList().get(s);
+    }
     
 }

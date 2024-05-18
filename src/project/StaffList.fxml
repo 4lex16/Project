@@ -10,10 +10,10 @@
       <Label layoutX="272.0" layoutY="39.0" text="StaffList" />
       <Button layoutX="526.0" layoutY="22.0" mnemonicParsing="false" onAction="#option" text="O" />
       <Button layoutX="254.0" layoutY="351.0" mnemonicParsing="false" onAction="#goBack" text="RETURN" />
-      <Button layoutX="236.0" layoutY="288.0" mnemonicParsing="false" text="Change" />
-      <Button layoutX="314.0" layoutY="288.0" mnemonicParsing="false" text="Delete" />
-      <Button layoutX="169.0" layoutY="288.0" mnemonicParsing="false" text="Inspect" />
-      <Button layoutX="375.0" layoutY="288.0" mnemonicParsing="false" text="Add" />
+      <Button layoutX="236.0" layoutY="288.0" mnemonicParsing="false" onAction="#change" text="Change" />
+      <Button layoutX="314.0" layoutY="288.0" mnemonicParsing="false" onAction="#delete" text="Delete" />
+      <Button layoutX="169.0" layoutY="288.0" mnemonicParsing="false" onAction="#inspect" text="Inspect" />
+      <Button layoutX="375.0" layoutY="288.0" mnemonicParsing="false" onAction="#add" text="Add" />
       <ListView fx:id="staffList" layoutX="140.0" layoutY="69.0" prefHeight="200.0" prefWidth="307.0" />
    </children>
 </AnchorPane>
