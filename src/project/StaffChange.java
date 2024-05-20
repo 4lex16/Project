@@ -4,10 +4,8 @@
  */
 package project;
 
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -99,7 +97,7 @@ public class StaffChange extends Window implements Initializable{
                 addressField.getText(),
                 passwordField.getText()
         );
-        if(Gym.getStaffList().get(newStaff.getKey()) == null) {
+        if(newStaff.getKey().equals(staff.getKey()) || Gym.getStaffList().get(newStaff.getKey()) == null) {
             Gym.remove(staff);
             Gym.add(newStaff);
             if(isStaffLogin) createLoginToken();
