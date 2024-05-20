@@ -23,8 +23,6 @@ public class Main extends Application{
         starttime = System.nanoTime();
         
         launch(args); // calls start functions btw
-        
-        saveLists(); // not implemented yet
     }
 
     @Override
@@ -36,10 +34,6 @@ public class Main extends Application{
             System.out.println("File not found in Main Start function");
         }
         System.out.println("time to open: " + (System.nanoTime() - starttime)/1000000 + "ms");
-    }
-    
-    private static void saveLists() {
-        
     }
     
     // These are functions that don't pertain to the function of the app.

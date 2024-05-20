@@ -48,13 +48,6 @@ public class StaffList extends Window implements Initializable{
         while(keys.hasMoreElements()) {
             staffList.getItems().add(Gym.getStaffList().get(keys.nextElement()));
         }
-        
-//        staffList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Staff>() {
-//            @Override
-//            public void changed(ObservableValue<? extends Staff> observable, Staff oldValue, Staff newValue) {
-//                System.out.println(staffList.getSelectionModel().getSelectedItem());
-//            }
-//        });
     }
 
     public void option(ActionEvent event) {
@@ -80,8 +73,8 @@ public class StaffList extends Window implements Initializable{
     public void inspect(ActionEvent event) {
         try {
             StaffInspect staffInspect = new StaffInspect();
-            staffInspect.staff = (Staff) staffList.getSelectionModel().getSelectedItem();
-            staffInspect.goBack = this;
+            StaffInspect.staff = (Staff) staffList.getSelectionModel().getSelectedItem();
+            StaffInspect.goBack = this;
             staffInspect.create((Stage) ((Node)event.getSource()).getScene().getWindow());
         } catch(IOException ioe) {
             System.out.println("");
@@ -89,26 +82,24 @@ public class StaffList extends Window implements Initializable{
     }
     
     public void change(ActionEvent event) {
-        System.out.println("Change");
         try {
             StaffChange staffChange = new StaffChange();
-            staffChange.staff = (Staff) staffList.getSelectionModel().getSelectedItem();
-            staffChange.goBack = this;
-            staffChange.create((Stage) ((Node)event.getSource()).getScene().getWindow());
+            StaffChange.staff = (Staff) staffList.getSelectionModel().getSelectedItem();
+            StaffChange.goBack = this;
+            StaffChange.isStaffLogin = false;
+            staffChange.create((Stage)((Node)event.getSource()).getScene().getWindow());
         } catch(IOException ioe) {
             System.out.println("");
         }
     }
     
     public void delete(ActionEvent event) {
-        try {
-            Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
-            StaffList sl = new StaffList();
-            StaffList.goBack = this;
-            sl.create(primaryStage);
-        } catch(IOException ioe) {
-            System.out.println("File not found in StaffView staffList");
-        }    
+        Gym.remove((Staff)staffList.getSelectionModel().getSelectedItem());
+        staffList.getItems().clear();
+        Enumeration<String> keys = Gym.getStaffList().keys();
+        while(keys.hasMoreElements()) {
+            staffList.getItems().add(Gym.getStaffList().get(keys.nextElement()));
+        }
     }
     
     public void add(ActionEvent event) {

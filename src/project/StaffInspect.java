@@ -15,6 +15,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 
@@ -44,6 +45,9 @@ public class StaffInspect extends Window implements Initializable{
 
     @FXML
     private Label phoneNumberLabel;
+    
+    @FXML
+    private Button optionButton;
     
     public static Window goBack;
     
@@ -78,6 +82,17 @@ public class StaffInspect extends Window implements Initializable{
             goBack.create(primaryStage);
         } catch(IOException ioes) {
             System.out.println("File not found in Option goBack");
+        }
+    }
+    
+    public void option(ActionEvent event) {
+        try {
+            Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            Option option = new Option();
+            Option.goBack = this;
+            option.create(primaryStage);
+        } catch(IOException ioe) {
+            System.out.println("File not found in Login Option");
         }
     }
 }

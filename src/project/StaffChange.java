@@ -52,6 +52,7 @@ public class StaffChange extends Window implements Initializable{
     
     public static Window goBack;
     public static Staff staff;
+    public static boolean isStaffLogin;
     
     @Override
     public void create(Stage primaryStage) throws IOException {
@@ -77,22 +78,9 @@ public class StaffChange extends Window implements Initializable{
         genderChoiceBox.setValue(staff.getGender());
     }
     
-    private Staff getToken() {
-        String s = "";
-        try(FileInputStream fis = new FileInputStream("logedin.ser")) {
-            ObjectInputStream ois = new ObjectInputStream(fis);
-            s = (String) ois.readObject();
-        } catch(IOException ioe) {
-            System.out.println("File not found");
-        } catch (Exception e) {
-            System.out.println("Exception Occured");
-        }
-        return Gym.getStaffList().get(s);
-    }
-    
     public void goBack(ActionEvent event) {
         try {                                                                                                                                           
-            Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+            Stage primaryStage = (Stage)((Node)event.getSource()).getScene().getWindow();
             goBack.create(primaryStage);
         } catch(IOException ioes) {
             System.out.println("File not found in Option goBack");
@@ -100,9 +88,14 @@ public class StaffChange extends Window implements Initializable{
     }
     
     public void change(ActionEvent event) {
-        Staff staff = getToken();
-        String oldKey = staff.getEmail()+staff.getPassword();
-        String newKey = emailField.getText()+passwordField.getText();
+        System.out.println(firstNameField.getText()+
+                lastNameField.getText()+
+                genderChoiceBox.getValue()+
+                phoneNumberField.getText()+
+                emailField.getText()+
+                addressField.getText()+
+                passwordField.getText());
+        
         Staff newStaff = new Staff(
                 firstNameField.getText(),
                 lastNameField.getText(),
@@ -112,10 +105,10 @@ public class StaffChange extends Window implements Initializable{
                 addressField.getText(),
                 passwordField.getText()
         );
-        if(Gym.getStaffList().get(newKey) == null) {
-            Gym.remove(oldKey);
+        if(Gym.getStaffList().get(newStaff.getKey()) == null) {
+            Gym.remove(staff);
             Gym.add(newStaff);
-            createLoginToken();
+            if(isStaffLogin) createLoginToken();
             goBack(event);
         }
     }

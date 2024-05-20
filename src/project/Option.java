@@ -95,7 +95,6 @@ public class Option extends Window implements Initializable{
     }
     
     public void close(ActionEvent event) {
-        
         Alert alert = new Alert(AlertType.CONFIRMATION);
         alert.setTitle("Logout");
         alert.setHeaderText("You're about to log out");
@@ -115,7 +114,7 @@ public class Option extends Window implements Initializable{
         try {
             StaffInspect staffInspect = new StaffInspect();
             StaffInspect.goBack = this;
-            staffInspect.staff = getToken();
+            StaffInspect.staff = getToken();
             staffInspect.create((Stage)(((Node)event.getSource()).getScene().getWindow()));
         } catch(IOException ioe) {
             System.out.println("File not found in Option inspect");
@@ -125,8 +124,9 @@ public class Option extends Window implements Initializable{
     public void change(ActionEvent event) {
         try {
             StaffChange staffChange = new StaffChange();
-            staffChange.goBack = this;
-            staffChange.staff = getToken();
+            StaffChange.goBack = this;
+            StaffChange.staff = getToken();
+            StaffChange.isStaffLogin = true;
             staffChange.create((Stage)(((Node)event.getSource()).getScene().getWindow()));
         } catch(IOException ioe) {
             System.out.println("File not found in Option inspect");

@@ -52,9 +52,7 @@ public class Gym {
     public static double removeCredit(double value) {
         creditBalance += value;
         return creditBalance;
-    }
-    
-    
+    }    
     
     public static List<Member> getMemberList() {
         return memberList;
@@ -73,11 +71,11 @@ public class Gym {
     }
     
     public static void add(Staff s) {
-        staffList.put(s.getEmail()+s.getPassword(), s);
+        staffList.put(s.getKey(), s);
     }
     
-    public static void remove(String str) {
-        staffList.remove(str);
+    public static void remove(Staff s) {
+        staffList.remove(s.getKey());
     }
     
     public static void writeMemberFile(String path) {

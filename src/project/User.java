@@ -101,6 +101,10 @@ public abstract class User implements Serializable{
         this.type = type;
     }
     
+    public String getKey() {
+        return email+password;
+    }
+    
     
     
     public void serialize() {
