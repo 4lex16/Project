@@ -8,8 +8,6 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Enumeration;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -71,38 +69,51 @@ public class StaffList extends Window implements Initializable{
     }
 
     public void inspect(ActionEvent event) {
-        try {
-            StaffInspect staffInspect = new StaffInspect();
-            StaffInspect.staff = (Staff) staffList.getSelectionModel().getSelectedItem();
-            StaffInspect.goBack = this;
-            staffInspect.create((Stage) ((Node)event.getSource()).getScene().getWindow());
-        } catch(IOException ioe) {
-            System.out.println("");
+        if((Staff)staffList.getSelectionModel().getSelectedItem()!=null) {
+            try {
+                StaffInspect staffInspect = new StaffInspect();
+                StaffInspect.staff = (Staff) staffList.getSelectionModel().getSelectedItem();
+                StaffInspect.goBack = this;
+                staffInspect.create((Stage) ((Node)event.getSource()).getScene().getWindow());
+            } catch(IOException ioe) {
+                System.out.println("");
+            }
         }
     }
     
     public void change(ActionEvent event) {
-        try {
-            StaffChange staffChange = new StaffChange();
-            StaffChange.staff = (Staff) staffList.getSelectionModel().getSelectedItem();
-            StaffChange.goBack = this;
-            StaffChange.isStaffLogin = false;
-            staffChange.create((Stage)((Node)event.getSource()).getScene().getWindow());
-        } catch(IOException ioe) {
-            System.out.println("");
+        if((Staff)staffList.getSelectionModel().getSelectedItem()!=null) {
+            try {
+                StaffChange staffChange = new StaffChange();
+                StaffChange.staff = (Staff) staffList.getSelectionModel().getSelectedItem();
+                StaffChange.goBack = this;
+                StaffChange.isStaffLogin = false;
+                StaffChange.tempuuid = StaffChange.staff.getUUID();
+                staffChange.create((Stage)((Node)event.getSource()).getScene().getWindow());
+            } catch(IOException ioe) {
+                System.out.println("");
+            }
         }
     }
     
     public void delete(ActionEvent event) {
-        Gym.remove((Staff)staffList.getSelectionModel().getSelectedItem());
-        staffList.getItems().clear();
-        Enumeration<String> keys = Gym.getStaffList().keys();
-        while(keys.hasMoreElements()) {
-            staffList.getItems().add(Gym.getStaffList().get(keys.nextElement()));
+        if((Staff)staffList.getSelectionModel().getSelectedItem()!=null) {
+            Gym.remove((Staff)staffList.getSelectionModel().getSelectedItem());
+            staffList.getItems().clear();
+            Enumeration<String> keys = Gym.getStaffList().keys();
+            while(keys.hasMoreElements()) {
+                staffList.getItems().add(Gym.getStaffList().get(keys.nextElement()));
+            }
         }
     }
     
     public void add(ActionEvent event) {
-        System.out.println("Add");
+        try {
+            StaffAdd staffAdd = new StaffAdd();
+            StaffAdd.goBack = this;
+            staffAdd.create((Stage)((Node)event.getSource()).getScene().getWindow());
+        } catch(IOException ioe) {
+            System.out.println("");
+        }
     }
 }

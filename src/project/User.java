@@ -43,8 +43,9 @@ public abstract class User implements Serializable{
         this.type = "user";
     }
     
-    
-
+    public String getUUID() {
+        return uuid;
+    }
     public String getEmail() {
         return email;
     }

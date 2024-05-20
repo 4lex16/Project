@@ -25,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class StaffChange extends Window implements Initializable{
+public class StaffAdd extends Window implements Initializable{
 
     @FXML
     private TextField addressField;
@@ -52,17 +52,15 @@ public class StaffChange extends Window implements Initializable{
     
     public static String tempuuid;
     public static Window goBack;
-    public static Staff staff;
-    public static boolean isStaffLogin;
     
     @Override
     public void create(Stage primaryStage) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("StaffChange.fxml"));
+        root = FXMLLoader.load(getClass().getResource("StaffAdd.fxml"));
         scene = new Scene(root);
         stage = primaryStage;
         //String css = this.getClass().getResource("general.css").toExternalForm();
         //scene.getStylesheets().add(css);
-        stage.setTitle("StaffChange");
+        stage.setTitle("StaffAdd");
         stage.setScene(scene);
         stage.show();
     }
@@ -70,13 +68,6 @@ public class StaffChange extends Window implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         genderChoiceBox.getItems().addAll(genders);
-        firstNameField.setText(staff.getFirstName());
-        lastNameField.setText(staff.getLastName());
-        emailField.setText(staff.getEmail());
-        addressField.setText(staff.getAddress());
-        passwordField.setText(staff.getPassword());
-        phoneNumberField.setText(staff.getPhoneNumber());
-        genderChoiceBox.setValue(staff.getGender());
     }
     
     public void goBack(ActionEvent event) {
@@ -88,9 +79,8 @@ public class StaffChange extends Window implements Initializable{
         }
     }
     
-    public void change(ActionEvent event) {
+    public void add(ActionEvent event) {
         Staff newStaff = new Staff(
-                tempuuid,
                 firstNameField.getText(),
                 lastNameField.getText(),
                 genderChoiceBox.getValue(),
@@ -100,21 +90,8 @@ public class StaffChange extends Window implements Initializable{
                 passwordField.getText()
         );
         if(Gym.getStaffList().get(newStaff.getKey()) == null) {
-            Gym.remove(staff);
             Gym.add(newStaff);
-            if(isStaffLogin) createLoginToken();
             goBack(event);
-        }
-    }
-    
-    private void createLoginToken() {
-        try(FileOutputStream fos = new FileOutputStream("logedin.ser")) {
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(String.format("%s%s", emailField.getText(), passwordField.getText()));
-        } catch(IOException ioe) {
-            System.out.println("File not found");
-        } catch (Exception e) {
-            System.out.println("Exception Occured");
         }
     }
 }

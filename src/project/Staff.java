@@ -22,10 +22,11 @@ public class Staff extends User{
     
     @Override
     public String toString() {
-        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s", uuid, firstName, lastName, gender, phoneNumber, email, address, password, type);
+        return String.format("%s %s %s", firstName, lastName, gender);
+        
     }
     
-    public String previewLable() {
-        return String.format("%s %s %s", firstName, lastName, gender);
+    public String csv() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s", uuid, firstName, lastName, gender, phoneNumber, email, address, password, type);
     }
 }
