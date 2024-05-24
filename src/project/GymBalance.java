@@ -48,7 +48,7 @@ public class GymBalance extends Window implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cashLabel.setText(String.format("Gym cash balance : %-4.2f", Gym.getCashBalance()));
-        creditLabel.setText(String.format("Gym cash balance : %-4.2f", Gym.getCashBalance()));
+        creditLabel.setText(String.format("Gym credit balance : %-4.2f", Gym.getCreditBalance()));
         totalLabel.setText(String.format("Gym total balance : %-4.2f", Gym.getTotalBalance()));
     }
     

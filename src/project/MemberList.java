@@ -13,10 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 
 /**
@@ -26,7 +23,7 @@ import javafx.stage.Stage;
 public class MemberList extends Window implements Initializable{
     
     @FXML
-    private VBox memberVbox;
+    private ListView memberList;
     
     public static Window goBack;
     
@@ -44,31 +41,8 @@ public class MemberList extends Window implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        for(Member m: Gym.getMemberList()) {
-            Label label = new Label(m.previewLable());
-            Button inspect = new Button("I");
-            Button change = new Button("C");
-            Button delete = new Button("D");
-            HBox hbox = new HBox();
-            hbox.getChildren().addAll(label, inspect, change, delete);
-            memberVbox.getChildren().add(hbox);
-        }
+        memberList.getItems().addAll(Gym.getMemberList());
     }
-//    
-//    private void instantiateMemberList(Parent root) {
-//        ScrollPane scrollPane = ((ScrollPane)root.getChildrenUnmodifiable().get(1));
-//        VBox vbox = new VBox();
-//        for(Member m: Gym.getMemberList()) {
-//            Label label = new Label(m.previewLable());
-//            Button inspect = new Button("I");
-//            Button change = new Button("C");
-//            Button delete = new Button("D");
-//            HBox hbox = new HBox();
-//            hbox.getChildren().addAll(label, inspect, change, delete);
-//            vbox.getChildren().add(hbox);
-//        }
-//        scrollPane.setContent(vbox);
-//    }
     
     public void option(ActionEvent event) {
         try {
@@ -90,6 +64,52 @@ public class MemberList extends Window implements Initializable{
         }
     }
 
+    public void inspect(ActionEvent event) {
+        if((Member)memberList.getSelectionModel().getSelectedItem()!=null) {
+            try {
+                MemberInspect mi = new MemberInspect();
+                MemberInspect.goBack = this;
+                MemberInspect.member = (Member) memberList.getSelectionModel().getSelectedItem();
+                mi.create((Stage)((Node)event.getSource()).getScene().getWindow());
+            } catch(IOException ioe) {
+                System.out.println("sdfsd");
+            }
+        }
+    }
+    
+    public void change(ActionEvent event) {
+        if((Member)memberList.getSelectionModel().getSelectedItem()!=null) {
+            try {
+                MemberChange mc = new MemberChange();
+                MemberChange.goBack = this;
+                MemberChange.tempuuid = ((Member)memberList.getSelectionModel().getSelectedItem()).getUUID();
+                MemberChange.member = (Member)memberList.getSelectionModel().getSelectedItem();
+                mc.create((Stage)((Node)event.getSource()).getScene().getWindow());
+            } catch(IOException ioe) {
+                System.out.println("sdfsd");
+            }
+        }
+    }
+    
+    public void delete(ActionEvent event) {
+        Member member = (Member)memberList.getSelectionModel().getSelectedItem();
+        if(member!=null) {
+            member.removePaid();
+            Gym.remove(member);
+            memberList.getItems().clear();
+            memberList.getItems().addAll(Gym.getMemberList());
+        }
+    }
+    
+    public void add(ActionEvent event) {
+        try {
+            MemberAdd ma = new MemberAdd();
+            MemberAdd.goBack = this;
+            ma.create((Stage)((Node)event.getSource()).getScene().getWindow());
+        } catch(IOException ioe) {
+            System.out.println("sdfsd");
+        }
+    }
     
     
 }

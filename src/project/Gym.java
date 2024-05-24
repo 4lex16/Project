@@ -5,8 +5,12 @@
 package project;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.Hashtable;
@@ -17,10 +21,10 @@ import java.util.List;
  * @author cirla
  */
 public class Gym {
-    private static List<Member> memberList = new ArrayList<>();
-    private static Dictionary<String, Staff> staffList = new Hashtable<>();
-    private static double cashBalance;
-    private static double creditBalance;
+    private static List<Member> memberList = deserializeMemberList();
+    private static Dictionary<String, Staff> staffList = deserializeStaffList();
+    private static double cashBalance = deserializeCash();
+    private static double creditBalance = deserializeCredit();
 
     public static double getCashBalance() {
         return cashBalance;
@@ -40,7 +44,7 @@ public class Gym {
     }
     
     public static double removeCash(double value) {
-        cashBalance += value;
+        cashBalance -= value;
         return cashBalance;
     }
     
@@ -50,7 +54,7 @@ public class Gym {
     }
     
     public static double removeCredit(double value) {
-        creditBalance += value;
+        creditBalance -= value;
         return creditBalance;
     }    
     
@@ -88,4 +92,85 @@ public class Gym {
             System.out.println("File not found while writing");
         }
     }
+    
+    public static void serializeMemberList() {
+        try(FileOutputStream fos = new FileOutputStream("memberList.ser")) {
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(memberList);
+        } catch(IOException ioe) {
+            System.out.println("File not found in Gym serializeMemberList");
+        } catch (Exception e) {
+            System.out.println("Exception Occured in Gym serializeMemberList");
+        }
+    }
+    
+    public static ArrayList<Member> deserializeMemberList() {
+        ArrayList<Member> ml = new ArrayList<>();
+        try(FileInputStream fis = new FileInputStream("memberList.ser")) {
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            ml = (ArrayList<Member>) ois.readObject();
+        } catch (Exception e) {}
+        return ml;
+    }
+    
+    public static void serializeStaffList() {
+        try(FileOutputStream fos = new FileOutputStream("staffList.ser")) {
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(staffList);
+        } catch(IOException ioe) {
+            System.out.println("File not found in Gym serializeStaffList");
+        } catch (Exception e) {
+            System.out.println("Exception Occured in Gym serializeStaffList");
+        }
+    }
+    
+    public static Dictionary<String, Staff> deserializeStaffList() {
+        Dictionary<String, Staff> sl = new Hashtable<>();
+        try(FileInputStream fis = new FileInputStream("staffList.ser")) {
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            sl = (Dictionary<String, Staff>) ois.readObject();
+        } catch (Exception e) {}
+        return sl;
+    }
+    
+    public static void serializeCash() {
+        try(FileOutputStream fos = new FileOutputStream("cash.ser")) {
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(cashBalance);
+        } catch(IOException ioe) {
+            System.out.println("File not found in Gym serializeCash");
+        } catch (Exception e) {
+            System.out.println("Exception Occured in Gym serializeCash");
+        }
+    }
+    
+    public static double deserializeCash() {
+        double c = 0;
+        try(FileInputStream fis = new FileInputStream("cash.ser")) {
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            c = (double) ois.readObject();
+        } catch (Exception e) {}
+        return c;
+    }
+    
+    public static void serializeCredit() {
+        try(FileOutputStream fos = new FileOutputStream("credit.ser")) {
+            ObjectOutputStream oos = new ObjectOutputStream(fos);
+            oos.writeObject(creditBalance);
+        } catch(IOException ioe) {
+            System.out.println("File not found in Gym serializeCredit");
+        } catch (Exception e) {
+            System.out.println("Exception Occured in Gym serializeCredit");
+        }
+    }
+    
+    public static double deserializeCredit() {
+        double c = 0;
+        try(FileInputStream fis = new FileInputStream("credit.ser")) {
+            ObjectInputStream ois = new ObjectInputStream(fis);
+            c = (double) ois.readObject();
+        } catch (Exception e) {}
+        return c;
+    }
+    
 }

@@ -87,6 +87,7 @@ public class StaffAdd extends Window implements Initializable{
         );
         if(Gym.getStaffList().get(newStaff.getKey()) == null) {
             Gym.add(newStaff);
+            Gym.serializeStaffList();
             goBack(event);
         }
     }

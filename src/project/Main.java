@@ -19,10 +19,8 @@ public class Main extends Application{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        instantiateLists(); // Just instansiates with random filler.
         starttime = System.nanoTime();
-        
-        launch(args); // calls start functions btw
+        launch(args);
     }
 
     @Override
@@ -34,19 +32,5 @@ public class Main extends Application{
             System.out.println("File not found in Main Start function");
         }
         System.out.println("time to open: " + (System.nanoTime() - starttime)/1000000 + "ms");
-    }
-    
-    // These are functions that don't pertain to the function of the app.
-    private static void instantiateLists() {
-        Staff test = new Staff(String.format("uuid"), String.format("firstname"), String.format("lastname"), String.format("M"), String.format("xxx-xxx-xxxx"), String.format("test"), String.format("address"), String.format("test"));
-        Gym.add(test);
-        for(int i = 0; i<30;i++) {
-            Member m = new Member(String.format("uuid%d", i), String.format("firstname%d", i), String.format("lastname%d", i), String.format("M"), String.format("xxx-xxx-xxxx%d", i), String.format("email%d@google.com", i), String.format("address%d", i), String.format("password%d", i), "regular", "cash");
-            Gym.add(m);
-        }
-        for(int i = 0; i<30;i++) {
-            Staff s = new Staff(String.format("uuid%d", i), String.format("firstname%d", i), String.format("lastname%d", i), String.format("M"), String.format("xxx-xxx-xxxx%d", i), String.format("email%d@google.com", i), String.format("address%d", i), String.format("password%d", i));
-            Gym.add(s);
-        }
     }
 }

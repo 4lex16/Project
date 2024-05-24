@@ -26,7 +26,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class Option extends Window implements Initializable{
+public class Option extends Window implements Initializable, Tokens{
     
     @FXML
     private Button inspectButton;
@@ -86,11 +86,6 @@ public class Option extends Window implements Initializable{
         } catch(IOException ioe) {
             System.out.println("File not found in Option logout");
         }
-    }
-    
-    private void deleteLoginToken() {
-        File f = new File("logedin.ser");
-        f.delete();
     }
     
     public void close(ActionEvent event) {

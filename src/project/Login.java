@@ -18,16 +18,28 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
  *
  * @author cirla
  */
-public class Login extends Window implements Initializable{
+public class Login extends Window implements Initializable, Tokens{
+    
+    @FXML
+    private AnchorPane parent;
+    
+    @FXML
+    private Button signinButton, signupButton;
+    
+    @FXML
+    private Label emailLabel, passwordLabel, signupLabel;
     
     @FXML
     private TextField emailField;
@@ -43,15 +55,17 @@ public class Login extends Window implements Initializable{
         root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         scene = new Scene(root);
         stage = primaryStage;
-        //String css = this.getClass().getResource("general.css").toExternalForm();
-        //scene.getStylesheets().add(css);
+        String css = this.getClass().getResource("general.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setTitle("Login");
+        stage.resizableProperty().set(false);
         stage.setScene(scene);
         stage.show();
     }
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        css();
         deleteLoginToken();
         String[] key = isRememberMe();
         if(key!=null) {
@@ -60,19 +74,33 @@ public class Login extends Window implements Initializable{
             passwordField.setText(key[1]);
         } else {
             rememberMeCheckBox.setSelected(false);
-            deleteRemeberMeToken();
+            deleteRememberMeToken();
+        }
+    }
+    
+    private void css() {
+        if (true) {
+            parent.getStyleClass().add("parent");
+            signinButton.getStyleClass().add("login-button");
+            signupButton.getStyleClass().add("sign-up-button");
+            emailField.getStyleClass().add("login-input");
+            passwordField.getStyleClass().add("login-input");
+        } else {
+        
         }
     }
     
     public void login(ActionEvent event) {
         try {
+            String email = emailField.getText();
+            String password = passwordField.getText();
             if(isLogin()) {
                 Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 StaffView staffView = new StaffView();
                 staffView.create(primaryStage);
-                createLoginToken();
-                if(rememberMeCheckBox.isSelected()) {createRemeberMeToken();}
-                else {deleteRemeberMeToken();}
+                Tokens.createLoginToken(email, password);
+                if(rememberMeCheckBox.isSelected()) {Tokens.createRememberMeToken(email, password);}
+                else {Tokens.deleteRememberMeToken();}
             }
         } catch(IOException ioe) {
             System.out.println("File not found in Login login function");
@@ -85,22 +113,6 @@ public class Login extends Window implements Initializable{
         return Gym.getStaffList().get(email+password) != null;
     }
     
-    private void createLoginToken() {
-        try(FileOutputStream fos = new FileOutputStream("logedin.ser")) {
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject(String.format("%s%s", emailField.getText(), passwordField.getText()));
-        } catch(IOException ioe) {
-            System.out.println("File not found in Login createLoginToken");
-        } catch (Exception e) {
-            System.out.println("Exception Occured in Login createLoginToken");
-        }
-    }
-    
-    private void deleteLoginToken() {
-        File f = new File("logedin.ser");
-        f.delete();
-    }
-    
     private String[] isRememberMe() {
         String[] s = null;
         try(FileInputStream fis = new FileInputStream("rememberMe.ser")) {
@@ -108,23 +120,6 @@ public class Login extends Window implements Initializable{
             s = (String[]) ois.readObject();
         } catch (Exception e) {}
         return s;
-    }
-    
-    private void createRemeberMeToken() {
-        try(FileOutputStream fos = new FileOutputStream("rememberMe.ser")) {
-            ObjectOutputStream oos = new ObjectOutputStream(fos);
-            String[] strs = {emailField.getText(), passwordField.getText()};
-            oos.writeObject(strs);
-        } catch(IOException ioe) {
-            System.out.println("File not found in Login createRememberMeToken");
-        } catch (Exception e) {
-            System.out.println("Exception Occured in Login createRememberMeToken");
-        }
-    }
-    
-    private void deleteRemeberMeToken() {
-        File f = new File("rememberMe.ser");
-        f.delete();
     }
 
     public void option(ActionEvent event) {
