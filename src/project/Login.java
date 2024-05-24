@@ -52,6 +52,7 @@ public class Login extends Window implements Initializable, Tokens{
     
     @Override
     public void create(Stage primaryStage) throws IOException{
+        
         root = FXMLLoader.load(getClass().getResource("Login.fxml"));
         scene = new Scene(root);
         stage = primaryStage;
@@ -79,14 +80,18 @@ public class Login extends Window implements Initializable, Tokens{
     }
     
     private void css() {
-        if (true) {
+        if (isToken("darkmode.ser")) {
             parent.getStyleClass().add("parent");
             signinButton.getStyleClass().add("login-button");
             signupButton.getStyleClass().add("sign-up-button");
             emailField.getStyleClass().add("login-input");
             passwordField.getStyleClass().add("login-input");
         } else {
-        
+            parent.getStyleClass().add("parent-dark");
+            signinButton.getStyleClass().add("login-button-dark");
+            signupButton.getStyleClass().add("sign-up-button-dark");
+            emailField.getStyleClass().add("login-input-dark");
+            passwordField.getStyleClass().add("login-input-dark");
         }
     }
     
@@ -98,9 +103,9 @@ public class Login extends Window implements Initializable, Tokens{
                 Stage primaryStage = (Stage) ((Node)event.getSource()).getScene().getWindow();
                 StaffView staffView = new StaffView();
                 staffView.create(primaryStage);
-                Tokens.createLoginToken(email, password);
-                if(rememberMeCheckBox.isSelected()) {Tokens.createRememberMeToken(email, password);}
-                else {Tokens.deleteRememberMeToken();}
+                createLoginToken(email, password);
+                if(rememberMeCheckBox.isSelected()) {createRememberMeToken(email, password);}
+                else {deleteRememberMeToken();}
             }
         } catch(IOException ioe) {
             System.out.println("File not found in Login login function");

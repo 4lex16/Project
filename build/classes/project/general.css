@@ -33,21 +33,48 @@
 
 .sign-up-button {
     -fx-border: none;
-    -fx-background-color: transparent;
     -fx-color: #ffcc33;
     -fx-font-size: 16px;
 }
 
-.login-label-dark {
-    -fx-color: white;
+
+/* DARK MODE */
+
+.parent {
+    -fx-background-color: #efefef;
 }
 
-.login-input-dark {
-    -fx-color: white;
+.parent-dark {
+    -fx-background-color: #111111;
 }
 
-.login-button-dark {
-    -fx-color: white;
+.login-label {
+    -fx-color: black;
+}
+
+.login-input {
+    -fx-color: black;
+    -fx-border: solid;
+    -fx-border-width: 2px;
+    -fx-border-radius: 0;
+    -fx-border-color: #111111;
+}
+
+.login-button {
+    -fx-border-radius: 0;
+    -fx-border: solid;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-background-color: #999999;
+    -fx-color: black;
+}
+
+.login-button:hover {
+    -fx-background-color: #ffcc33;
+}
+
+.sign-up-button {
     -fx-border: none;
-    -fx-background-color: #222222;
+    -fx-color: #ffcc33;
+    -fx-font-size: 16px;
 }

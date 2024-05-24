@@ -5,6 +5,7 @@
 package project;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -14,6 +15,16 @@ import java.io.ObjectOutputStream;
  * @author cirla
  */
 public interface Tokens {
+    
+    default boolean isToken(String file) {
+        try(FileInputStream fis = new FileInputStream(file)) {
+            return true;
+        } catch(IOException ioe) {
+            return false;
+        } catch (Exception e) {
+            return false;
+        }
+    }
     
     // Login Token
 
@@ -57,7 +68,7 @@ public interface Tokens {
     default void createDarkmodeToken() {
         try(FileOutputStream fos = new FileOutputStream("darkmode.ser")) {
             ObjectOutputStream oos = new ObjectOutputStream(fos);
-            oos.writeObject("");
+            oos.writeObject("sdfsdfsdf");
         } catch(IOException ioe) {
             System.out.println("File not found in Login createLoginToken");
         } catch (Exception e) {
@@ -69,4 +80,6 @@ public interface Tokens {
         File f = new File("darkmode.ser");
         f.delete();
     }
+    
+    
 }

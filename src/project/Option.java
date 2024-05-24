@@ -53,19 +53,9 @@ public class Option extends Window implements Initializable, Tokens{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        inspectButton.setVisible(getLoginToken());
-        changeButton.setVisible(getLoginToken());
-        logoutButton.setVisible(getLoginToken());
-    }
-    
-    private boolean getLoginToken() {
-        try(FileInputStream fis = new FileInputStream("logedin.ser")) {
-            return true;
-        } catch(IOException ioe) {
-            return false;
-        } catch (Exception e) {
-            return false;
-        }
+        inspectButton.setVisible(isToken("logedin.ser"));
+        changeButton.setVisible(isToken("logedin.ser"));
+        logoutButton.setVisible(isToken("logedin.ser"));
     }
     
     public void goBack(ActionEvent event) {
@@ -101,7 +91,13 @@ public class Option extends Window implements Initializable, Tokens{
     }
     
     public void darkmode(ActionEvent event) {
-        System.out.println("Darkmode");
+        if (isToken("darkmode.ser")) {
+            System.out.println("lightmode");
+            deleteDarkmodeToken();
+        } else {
+            System.out.println("darkmode");
+            createDarkmodeToken();
+        }
     }
     
     public void inspect(ActionEvent event) {
