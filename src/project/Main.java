@@ -19,7 +19,6 @@ public class Main extends Application{
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        starttime = System.nanoTime();
         launch(args);
     }
 
@@ -31,6 +30,5 @@ public class Main extends Application{
         } catch(IOException ioe) {
             System.out.println("File not found in Main Start function");
         }
-        System.out.println("time to open: " + (System.nanoTime() - starttime)/1000000 + "ms");
     }
 }

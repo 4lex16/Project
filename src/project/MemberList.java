@@ -13,17 +13,44 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
  *
  * @author cirla
  */
-public class MemberList extends Window implements Initializable{
+public class MemberList extends Window implements Initializable, Tokens{
     
     @FXML
-    private ListView memberList;
+    private Button addButton;
+
+    @FXML
+    private Button changeButton;
+
+    @FXML
+    private Button deleteButton;
+
+    @FXML
+    private Button goBackButton;
+
+    @FXML
+    private Button inspectButton;
+
+    @FXML
+    private ListView<Member> memberList;
+
+    @FXML
+    private Label memberlistLabel;
+
+    @FXML
+    private Button optionButton;
+
+    @FXML
+    private AnchorPane parent;
     
     public static Window goBack;
     
@@ -32,8 +59,8 @@ public class MemberList extends Window implements Initializable{
         root = FXMLLoader.load(getClass().getResource("MemberList.fxml"));
         scene = new Scene(root);
         stage = primaryStage;
-        //String css = this.getClass().getResource("general.css").toExternalForm();
-        //scene.getStylesheets().add(css);
+        String css = this.getClass().getResource("general.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setTitle("MemberList");
         stage.setScene(scene);
         stage.show();
@@ -42,6 +69,29 @@ public class MemberList extends Window implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         memberList.getItems().addAll(Gym.getMemberList());
+        css();
+    }
+    
+    private void css() {
+        if(isToken("darkmode.ser")) {
+            parent.getStyleClass().add("parent-dark");
+            addButton.getStyleClass().add("button-gen-dark");
+            changeButton.getStyleClass().add("button-gen-dark");
+            deleteButton.getStyleClass().add("button-gen-dark");
+            inspectButton.getStyleClass().add("button-gen-dark");
+            goBackButton.getStyleClass().add("button-gen-dark");
+            optionButton.getStyleClass().add("button-gen-dark");
+            memberlistLabel.getStyleClass().add("label-gen-dark");
+        } else {
+            parent.getStyleClass().add("parent");
+            addButton.getStyleClass().add("button-gen");
+            changeButton.getStyleClass().add("button-gen");
+            deleteButton.getStyleClass().add("button-gen");
+            inspectButton.getStyleClass().add("button-gen");
+            goBackButton.getStyleClass().add("button-gen");
+            optionButton.getStyleClass().add("button-gen");
+            memberlistLabel.getStyleClass().add("label-gen");
+        }
     }
     
     public void option(ActionEvent event) {
@@ -86,7 +136,7 @@ public class MemberList extends Window implements Initializable{
                 MemberChange.member = (Member)memberList.getSelectionModel().getSelectedItem();
                 mc.create((Stage)((Node)event.getSource()).getScene().getWindow());
             } catch(IOException ioe) {
-                System.out.println("sdfsd");
+                ioe.printStackTrace();
             }
         }
     }
@@ -96,6 +146,7 @@ public class MemberList extends Window implements Initializable{
         if(member!=null) {
             member.removePaid();
             Gym.remove(member);
+            Gym.serializeMemberList();
             memberList.getItems().clear();
             memberList.getItems().addAll(Gym.getMemberList());
         }

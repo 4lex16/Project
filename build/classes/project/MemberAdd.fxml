@@ -7,104 +7,123 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.MemberAdd">
+<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.MemberAdd">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="&lt;" />
-      <Button layoutX="280.0" layoutY="361.0" mnemonicParsing="false" onAction="#add" text="ADD" />
-      <VBox layoutX="80.0" layoutY="43.0" prefHeight="306.0" prefWidth="444.0">
+      <Button fx:id="addButton" layoutX="235.0" layoutY="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#add" prefHeight="30.0" prefWidth="150.0" text="ADD">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <Button fx:id="goBackButton" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="50.0" text="&lt;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <VBox layoutX="140.0" layoutY="24.0" style="-fx-spacing: 10;">
          <children>
-            <HBox prefHeight="0.0" prefWidth="444.0">
+            <HBox style="-fx-spacing: 40;">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox>
                      <children>
-                        <Label text="First Name" />
-                        <TextField fx:id="firstNameLabel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="firstNameLabel" text="First Name" />
+                        <TextField fx:id="firstNameInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox>
                      <children>
-                        <Label text="Gender" />
+                        <Label fx:id="genderLabel" text="Gender" />
                         <ChoiceBox fx:id="genderChoiceBox" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="444.0">
+            <HBox style="-fx-spacing: 40;">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox>
                      <children>
-                        <Label text="Last Name" />
-                        <TextField fx:id="lastNameLabel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="lastNameLabel" text="Last Name" />
+                        <TextField fx:id="lastNameInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox>
                      <children>
-                        <Label text="Membership" />
+                        <Label fx:id="membershipLabel" text="Membership" />
                         <ChoiceBox fx:id="membershipChoiceBox" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="52.0" prefHeight="0.0" prefWidth="444.0">
+            <HBox style="-fx-spacing: 40;">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox>
                      <children>
-                        <Label text="Phone Number" />
-                        <TextField fx:id="phoneNumberLabel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="phoneLabel" text="Phone Number" />
+                        <TextField fx:id="phoneInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox>
                      <children>
-                        <Label text="Time" />
+                        <Label fx:id="timeLabel" text="Time" />
                         <ChoiceBox fx:id="timeChoiceBox" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="94.0" prefHeight="0.0" prefWidth="444.0">
+            <HBox style="-fx-spacing: 40;">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox>
                      <children>
-                        <Label text="Email" />
-                        <TextField fx:id="emailLabel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="emailLabel" text="Email" />
+                        <TextField fx:id="emailInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox>
                      <children>
-                        <Label text="Payment Method" />
+                        <Label fx:id="paymentLabel" text="Payment Method" />
                         <ChoiceBox fx:id="paymentMethodChoiceBox" prefHeight="25.0" prefWidth="150.0" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="136.0" prefHeight="101.0" prefWidth="444.0">
+            <HBox style="-fx-spacing: 40;">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox style="-fx-spacing: 10;">
                      <children>
-                        <Label text="Address" />
-                        <TextField fx:id="addressLabel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
-                        <Label layoutX="10.0" layoutY="10.0" text="Password" />
-                        <TextField fx:id="passwordLabel" layoutX="10.0" layoutY="27.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <VBox>
+                           <children>
+                              <Label fx:id="addressLabel" text="Address" />
+                              <TextField fx:id="addressInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label fx:id="passwordLabel" text="Password" />
+                              <TextField fx:id="passwordInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                           </children>
+                        </VBox>
                      </children>
                   </VBox>
-                  <VBox fx:id="creditCardVBox" prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox fx:id="creditCardVBox" style="-fx-spacing: 10;">
                      <children>
-                        <Label text="Credit Card Number" />
-                        <TextField fx:id="creditCardLabel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="180.0" />
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <VBox>
                            <children>
-                              <VBox prefHeight="59.0" prefWidth="80.0" HBox.hgrow="ALWAYS">
+                              <Label fx:id="creditLabel" text="Credit Card Number" />
+                              <TextField fx:id="creditInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                           </children>
+                        </VBox>
+                        <HBox style="-fx-spacing: 20;">
+                           <children>
+                              <VBox>
                                  <children>
-                                    <Label text="CVV/CSC" />
-                                    <TextField fx:id="cvvLabel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" />
+                                    <Label fx:id="cvvLabel" text="CVV/CSC" />
+                                    <TextField fx:id="cvvInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="65.0" />
                                  </children>
                               </VBox>
-                              <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                              <VBox>
                                  <children>
-                                    <Label text="Expiration Date" />
-                                    <TextField fx:id="expirationLabel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="80.0" />
+                                    <Label fx:id="expLabel" text="Exp. Date" />
+                                    <TextField fx:id="expInput" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="65.0" />
                                  </children>
                               </VBox>
                            </children>

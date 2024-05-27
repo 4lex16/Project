@@ -1,0 +1,53 @@
+/* LIGHT MODE */
+.login-check .box{
+    -fx-border-color: black;
+    -fx-border: solid;
+    -fx-border-width: 2px;
+    -fx-background-color: white;
+}
+
+.login-check:hover .box{
+    -fx-border-color: #999999;
+}
+
+.sign-up-button {
+    -fx-border: none;
+    -fx-background-color: transparent;
+    -fx-underline: false;
+}
+
+.sign-up-button:hover {
+    -fx-background-color: transparent;
+    -fx-underline: true;
+}
+
+/* DARK MODE */
+.login-check-dark {
+    -fx-text-fill: white;
+}
+
+.login-check-dark .check{
+    -fx-background-color: white;
+}
+
+.login-check-dark .box{
+    -fx-background-color: #111111;
+    -fx-border-color: white;
+    -fx-border-style: solid;
+    -fx-border-width: 2px;
+}
+
+.login-check-dark:hover .box{
+    -fx-border-color: #666666
+}
+
+.sign-up-button-dark {
+    -fx-background-color: transparent;
+    -fx-underline: false;
+    -fx-text-fill: white;
+}
+
+.sign-up-button-dark:hover {
+    -fx-underline: true;
+}
+

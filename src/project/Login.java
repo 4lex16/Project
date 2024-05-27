@@ -4,12 +4,9 @@
  */
 package project;
 
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -31,6 +28,9 @@ import javafx.stage.Stage;
  * @author cirla
  */
 public class Login extends Window implements Initializable, Tokens{
+    
+    @FXML
+    private Button optionButton;
     
     @FXML
     private AnchorPane parent;
@@ -57,7 +57,9 @@ public class Login extends Window implements Initializable, Tokens{
         scene = new Scene(root);
         stage = primaryStage;
         String css = this.getClass().getResource("general.css").toExternalForm();
+        String css2 = this.getClass().getResource("login.css").toExternalForm();
         scene.getStylesheets().add(css);
+        scene.getStylesheets().add(css2);
         stage.setTitle("Login");
         stage.resizableProperty().set(false);
         stage.setScene(scene);
@@ -81,17 +83,27 @@ public class Login extends Window implements Initializable, Tokens{
     
     private void css() {
         if (isToken("darkmode.ser")) {
-            parent.getStyleClass().add("parent");
-            signinButton.getStyleClass().add("login-button");
-            signupButton.getStyleClass().add("sign-up-button");
-            emailField.getStyleClass().add("login-input");
-            passwordField.getStyleClass().add("login-input");
-        } else {
             parent.getStyleClass().add("parent-dark");
-            signinButton.getStyleClass().add("login-button-dark");
+            signinButton.getStyleClass().add("button-gen-dark");
             signupButton.getStyleClass().add("sign-up-button-dark");
-            emailField.getStyleClass().add("login-input-dark");
-            passwordField.getStyleClass().add("login-input-dark");
+            emailField.getStyleClass().add("input-gen-dark");
+            passwordField.getStyleClass().add("input-gen-dark");
+            rememberMeCheckBox.getStyleClass().add("login-check-dark");
+            optionButton.getStyleClass().add("button-gen-dark");
+            emailLabel.getStyleClass().add("label-gen-dark");
+            passwordLabel.getStyleClass().add("label-gen-dark");
+            signupLabel.getStyleClass().add("label-gen-dark");
+        } else {
+            parent.getStyleClass().add("parent");
+            signinButton.getStyleClass().add("button-gen");
+            signupButton.getStyleClass().add("sign-up-button");
+            emailField.getStyleClass().add("input-gen");
+            passwordField.getStyleClass().add("input-gen");
+            rememberMeCheckBox.getStyleClass().add("login-check");
+            optionButton.getStyleClass().add("button-gen");
+            emailLabel.getStyleClass().add("label-gen");
+            passwordLabel.getStyleClass().add("label-gen");
+            signupLabel.getStyleClass().add("label-gen");
         }
     }
     

@@ -5,102 +5,119 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.MemberInspect">
+<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.MemberInspect">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goBack" text="&lt;" />
-      <VBox alignment="CENTER" layoutX="90.0" layoutY="53.0" prefHeight="306.0" prefWidth="444.0">
+      <Button fx:id="goBackButton" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="50.0" text="&lt;">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Button>
+      <VBox layoutX="150.0" layoutY="34.0" style="-fx-spacing: 20;">
          <children>
-            <HBox prefHeight="0.0" prefWidth="444.0">
+            <HBox style="-fx-spacing: 80;">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox minWidth="100.0">
                      <children>
-                        <Label text="First Name" />
-                        <Label fx:id="firstNameLabel" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="firstNameLabel" text="First Name" />
+                        <Label fx:id="firstNameInput" layoutX="10.0" layoutY="10.0" text="First Name" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox minWidth="100.0">
                      <children>
-                        <Label text="Gender" />
-                        <Label fx:id="genderLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="genderLabel" text="Gender" />
+                        <Label fx:id="genderInput" layoutX="10.0" layoutY="10.0" text="Gender" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="444.0">
+            <HBox style="-fx-spacing: 80;">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox minWidth="100.0">
                      <children>
-                        <Label text="Last Name" />
-                        <Label fx:id="lastNameLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="lastNameLabel" text="Last Name" />
+                        <Label fx:id="lastNameInput" layoutX="10.0" layoutY="10.0" text="Last Name" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox minWidth="100.0">
                      <children>
-                        <Label text="Membership" />
-                        <Label fx:id="memberShipLabel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="membershipLabel" text="Membership" />
+                        <Label fx:id="membershipInput" layoutX="10.0" layoutY="10.0" text="Membership" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="52.0" prefHeight="0.0" prefWidth="444.0">
+            <HBox style="-fx-spacing: 80;">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="46.0" HBox.hgrow="ALWAYS">
+                  <VBox minWidth="100.0">
                      <children>
-                        <Label text="Phone Number" />
-                        <Label fx:id="phoneNumberLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="phoneLabel" text="Phone Number" />
+                        <Label fx:id="phoneInput" layoutX="10.0" layoutY="10.0" text="Phone Number" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox minWidth="100.0">
                      <children>
-                        <Label text="Time" />
-                        <Label fx:id="timeLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="timeLabel" text="Time" />
+                        <Label fx:id="timeInput" layoutX="10.0" layoutY="10.0" text="Time" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="94.0" prefHeight="0.0" prefWidth="444.0">
+            <HBox style="-fx-spacing: 80;">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox minWidth="100.0">
                      <children>
-                        <Label text="Email" />
-                        <Label fx:id="emailLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="emailLabel" text="Email" />
+                        <Label fx:id="emailInput" layoutX="10.0" layoutY="10.0" text="Email" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox minWidth="100.0">
                      <children>
-                        <Label text="Payment Method" />
-                        <Label fx:id="paymentMethod" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
+                        <Label fx:id="paymentLabel" text="Payment Method" />
+                        <Label fx:id="paymentInput" layoutX="10.0" layoutY="10.0" text="Payment Method" />
                      </children>
                   </VBox>
                </children>
             </HBox>
-            <HBox layoutX="10.0" layoutY="136.0" prefHeight="101.0" prefWidth="444.0">
+            <HBox style="-fx-spacing: 80;">
                <children>
-                  <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                  <VBox minWidth="100.0" style="-fx-spacing: 20;">
                      <children>
-                        <Label text="Address" />
-                        <Label fx:id="addressLabel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
-                        <Label layoutX="10.0" layoutY="10.0" text="Password" />
-                        <Label fx:id="passwordLabel" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
-                     </children>
-                  </VBox>
-                  <VBox fx:id="creditCardVBox" prefHeight="200.0" prefWidth="82.0" HBox.hgrow="ALWAYS">
-                     <children>
-                        <Label text="Credit Card Number" />
-                        <Label fx:id="creditCardNumberLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="150.0" />
-                        <HBox prefHeight="100.0" prefWidth="200.0">
+                        <VBox>
                            <children>
-                              <VBox prefHeight="59.0" prefWidth="80.0" HBox.hgrow="ALWAYS">
+                              <Label fx:id="addressLabel" text="Address" />
+                              <Label fx:id="addressInput" layoutX="10.0" layoutY="10.0" text="Address" />
+                           </children>
+                        </VBox>
+                        <VBox>
+                           <children>
+                              <Label fx:id="passwordLabel" text="Password" />
+                              <Label fx:id="passwordInput" layoutX="10.0" layoutY="10.0" text="Password" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </VBox>
+                  <VBox fx:id="creditCardVBox" minWidth="100.0" style="-fx-spacing: 20;">
+                     <children>
+                        <VBox>
+                           <children>
+                              <Label fx:id="creditLabel" text="Credit Card Number" />
+                              <Label fx:id="creditInput" layoutX="10.0" layoutY="10.0" text="Credit Card Number" />
+                           </children>
+                        </VBox>
+                        <HBox style="-fx-spacing: 20;">
+                           <children>
+                              <VBox>
                                  <children>
-                                    <Label text="CVV/CSC" />
-                                    <Label fx:id="cvvLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="60.0" />
+                                    <Label fx:id="cvvLabel" text="CVV/CSC" />
+                                    <Label fx:id="cvvInput" layoutX="10.0" layoutY="10.0" text="CVV/CSC" />
                                  </children>
                               </VBox>
-                              <VBox prefHeight="59.0" prefWidth="57.0" HBox.hgrow="ALWAYS">
+                              <VBox>
                                  <children>
-                                    <Label text="Expiration Date" />
-                                    <Label fx:id="expDateLabel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="60.0" />
+                                    <Label fx:id="expLabel" text="Exp. Date" />
+                                    <Label fx:id="expInput" layoutX="10.0" layoutY="10.0" text="Exp. Date" />
                                  </children>
                               </VBox>
                            </children>

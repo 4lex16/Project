@@ -10,7 +10,7 @@
 
 <AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.Login">
    <children>
-      <Label fx:id="signupLabel" alignment="CENTER" layoutY="9.0" prefHeight="46.0" prefWidth="600.0" text="Sign In">
+      <Label fx:id="signupLabel" alignment="CENTER" layoutY="14.0" prefHeight="50.0" prefWidth="600.0" text="Sign In">
          <font>
             <Font size="32.0" />
          </font>
@@ -19,25 +19,21 @@
          <font>
             <Font size="18.0" />
          </font></Label>
-      <Label fx:id="passwordLabel" layoutX="141.0" layoutY="200.0" prefHeight="25.0" prefWidth="100.0" text="Password:">
+      <Label fx:id="passwordLabel" layoutX="141.0" layoutY="205.0" prefHeight="25.0" prefWidth="100.0" text="Password:">
          <font>
             <Font size="18.0" />
          </font></Label>
-      <TextField fx:id="emailField" layoutX="141.0" layoutY="175.0" prefWidth="300.0" promptText="Email" />
-      <Button fx:id="signupButton" layoutX="241.0" layoutY="342.0" mnemonicParsing="false" onAction="#register" prefHeight="18.0" prefWidth="100.0" text="SIGN UP">
-         <font>
-            <Font size="8.0" />
-         </font>
-      </Button>
-      <Button fx:id="signinButton" layoutX="241.0" layoutY="297.0" mnemonicParsing="false" onAction="#login" prefHeight="25.0" prefWidth="100.0" text="SIGN IN">
+      <TextField fx:id="emailField" layoutX="141.0" layoutY="175.0" prefHeight="25.0" prefWidth="300.0" promptText="Email" />
+      <Button fx:id="signupButton" alignment="TOP_LEFT" layoutX="221.0" layoutY="336.0" mnemonicParsing="false" onAction="#register" prefHeight="25.0" prefWidth="143.0" text="Don't have an account?" />
+      <Button fx:id="signinButton" layoutX="229.0" layoutY="297.0" mnemonicParsing="false" onAction="#login" prefHeight="39.0" prefWidth="123.0" text="SIGN IN">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <Button fx:id="optionButton" layoutX="548.0" layoutY="12.0" mnemonicParsing="false" onAction="#option" text="O">
+      <Button fx:id="optionButton" alignment="CENTER" graphicTextGap="0.0" layoutX="536.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#option" prefHeight="50.0" prefWidth="50.0" text="O">
          <font>
             <Font size="18.0" />
          </font></Button>
-      <PasswordField fx:id="passwordField" layoutX="141.0" layoutY="227.0" prefWidth="300.0" promptText="Password" />
-      <CheckBox fx:id="rememberMeCheckBox" layoutX="241.0" layoutY="262.0" mnemonicParsing="false" text="Remember Me" />
+      <PasswordField fx:id="passwordField" layoutX="141.0" layoutY="232.0" prefWidth="300.0" promptText="Password" />
+      <CheckBox fx:id="rememberMeCheckBox" layoutX="241.0" layoutY="272.0" mnemonicParsing="false" text="Remember Me" />
    </children>
 </AnchorPane>

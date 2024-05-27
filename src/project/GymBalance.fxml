@@ -4,18 +4,38 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.GymBalance">
+<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.GymBalance">
    <children>
-      <Button fx:id="returnButton" layoutX="274.0" layoutY="315.0" mnemonicParsing="false" onAction="#goBack" text="RETURN" />
-      <VBox fx:id="cashVbox" alignment="CENTER_LEFT" layoutX="246.0" layoutY="91.0" prefHeight="200.0" prefWidth="167.0">
+      <Label fx:id="gymLabel" alignment="CENTER" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" text="Gym Balance">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Button fx:id="goBackButton" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="50.0" text="&lt;">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <VBox alignment="CENTER" layoutX="175.0" layoutY="100.0" prefHeight="165.0" prefWidth="350.0" style="-fx-spacing: 50;">
          <children>
-            <Label fx:id="cashLabel" />
-            <Label fx:id="creditLabel" />
-            <Label fx:id="totalLabel" />
+            <Label fx:id="cashLabel" prefHeight="35.0" prefWidth="463.0" text="Cash Balance">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label fx:id="creditLabel" prefHeight="35.0" prefWidth="490.0" text="Credit Balance">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label fx:id="totalLabel" prefHeight="35.0" prefWidth="543.0" text="Total Balance">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
          </children>
       </VBox>
-      <Button fx:id="optionButton" layoutX="548.0" layoutY="25.0" mnemonicParsing="false" onAction="#option" text="O" />
-      <Label layoutX="270.0" layoutY="29.0" text="Gym Balance" />
+      <Button fx:id="optionButton" layoutX="536.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#option" prefHeight="50.0" prefWidth="50.0" text="O">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
    </children>
 </AnchorPane>

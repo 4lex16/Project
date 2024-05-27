@@ -13,30 +13,49 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
  *
  * @author cirla
  */
-public class StaffAdd extends Window implements Initializable{
+public class StaffAdd extends Window implements Initializable, Tokens{
 
     @FXML
     private TextField addressField;
 
     @FXML
+    private Label addressLabel;
+
+    @FXML
+    private Button addButton;
+
+    @FXML
     private TextField emailField;
+
+    @FXML
+    private Label emailLabel;
 
     @FXML
     private TextField firstNameField;
 
     @FXML
+    private Label firstNameLabel;
+
+    @FXML
     private ChoiceBox<String> genderChoiceBox;
-    
-    private final String[] genders = {"Male", "Female", "Transformer", "Attack Helicopter", "Other"};
-    
+
+    @FXML
+    private Label genderLabel;
+
+    @FXML
+    private Button goBackButton;
+
     @FXML
     private TextField lastNameField;
 
@@ -44,7 +63,21 @@ public class StaffAdd extends Window implements Initializable{
     private TextField passwordField;
 
     @FXML
-    private TextField phoneNumberField;
+    private Label passwordLabel;
+
+    @FXML
+    private TextField phoneField;
+
+    @FXML
+    private Label phoneLabel;
+    
+    @FXML
+    private AnchorPane parent;
+    
+    @FXML
+    private Label lastNameLabel;
+    
+    private final String[] genders = {"Male", "Female", "Transformer", "Attack Helicopter", "Other"};
     
     public static String tempuuid;
     public static Window goBack;
@@ -54,8 +87,8 @@ public class StaffAdd extends Window implements Initializable{
         root = FXMLLoader.load(getClass().getResource("StaffAdd.fxml"));
         scene = new Scene(root);
         stage = primaryStage;
-        //String css = this.getClass().getResource("general.css").toExternalForm();
-        //scene.getStylesheets().add(css);
+        String css = this.getClass().getResource("general.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setTitle("StaffAdd");
         stage.setScene(scene);
         stage.show();
@@ -64,6 +97,52 @@ public class StaffAdd extends Window implements Initializable{
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         genderChoiceBox.getItems().addAll(genders);
+        css();
+    }
+    
+    private void css() {
+        if(isToken("darkmode.ser")) {    
+            parent.getStyleClass().add("parent-dark");
+            genderChoiceBox.getStyleClass().add("choice-gen-dark");
+            firstNameField.getStyleClass().add("input-gen-dark");
+            lastNameField.getStyleClass().add("input-gen-dark");
+            phoneField.getStyleClass().add("input-gen-dark");
+            emailField.getStyleClass().add("input-gen-dark");
+            addressField.getStyleClass().add("input-gen-dark");
+            passwordField.getStyleClass().add("input-gen-dark");
+            
+            goBackButton.getStyleClass().add("button-gen-dark");
+            addButton.getStyleClass().add("button-gen-dark");
+            
+            genderLabel.getStyleClass().add("label-gen-dark");
+            firstNameLabel.getStyleClass().add("label-gen-dark");
+            lastNameLabel.getStyleClass().add("label-gen-dark");
+            phoneLabel.getStyleClass().add("label-gen-dark");
+            emailLabel.getStyleClass().add("label-gen-dark");
+            addressLabel.getStyleClass().add("label-gen-dark");
+            passwordLabel.getStyleClass().add("label-gen-dark");
+            
+        } else {
+            parent.getStyleClass().add("parent");
+            genderChoiceBox.getStyleClass().add("choice-gen");
+            firstNameField.getStyleClass().add("input-gen");
+            lastNameField.getStyleClass().add("input-gen");
+            phoneField.getStyleClass().add("input-gen");
+            emailField.getStyleClass().add("input-gen");
+            addressField.getStyleClass().add("input-gen");
+            passwordField.getStyleClass().add("input-gen");
+            
+            goBackButton.getStyleClass().add("button-gen");
+            addButton.getStyleClass().add("button-gen");
+            
+            genderLabel.getStyleClass().add("label-gen");
+            firstNameLabel.getStyleClass().add("label-gen");
+            lastNameLabel.getStyleClass().add("label-gen");
+            phoneLabel.getStyleClass().add("label-gen");
+            emailLabel.getStyleClass().add("label-gen");
+            addressLabel.getStyleClass().add("label-gen");
+            passwordLabel.getStyleClass().add("label-gen");
+        }
     }
     
     public void goBack(ActionEvent event) {
@@ -80,7 +159,7 @@ public class StaffAdd extends Window implements Initializable{
                 firstNameField.getText(),
                 lastNameField.getText(),
                 genderChoiceBox.getValue(),
-                phoneNumberField.getText(),
+                phoneField.getText(),
                 emailField.getText(),
                 addressField.getText(),
                 passwordField.getText()

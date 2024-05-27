@@ -1,80 +1,81 @@
+.root {
+    panel-l: #efefef;
+    light-input: #aaaaaa;
+    light-hover-input: #bbbbbb;
+    
+    panel-d: #111111;
+    dark-input: #444444;
+    dark-hover-input: #333333;
+}
+/* LIGHT MODE*/
 .parent {
-    -fx-background-color: #efefef;
+    -fx-background-color: panel-l;
 }
 
-.parent-dark {
-    -fx-background-color: #111111;
+.button-gen {
+    -fx-background-color: light-input;
+    -fx-text-fill: white;
 }
 
-.login-label {
-    -fx-color: black;
+.button-gen:hover {
+    -fx-background-color: light-hover-input;
 }
 
-.login-input {
-    -fx-color: black;
+.label-gen {
+    -fx-text-fill: black;
+}
+
+.input-gen {
+    -fx-text-fill: black;
     -fx-border: solid;
     -fx-border-width: 2px;
     -fx-border-radius: 0;
     -fx-border-color: #111111;
 }
 
-.login-button {
-    -fx-border-radius: 0;
-    -fx-border: solid;
-    -fx-border-color: black;
-    -fx-border-width: 2px;
-    -fx-background-color: #999999;
-    -fx-color: black;
+.choice-gen {
+    -fx-background-color: light-input;
+    -fx-text-fill: white;
 }
 
-.login-button:hover {
-    -fx-background-color: #ffcc33;
-}
-
-.sign-up-button {
-    -fx-border: none;
-    -fx-color: #ffcc33;
-    -fx-font-size: 16px;
+.choice-gen:hover {
+    -fx-background-color: light-hover-input;
 }
 
 
 /* DARK MODE */
 
-.parent {
-    -fx-background-color: #efefef;
-}
-
 .parent-dark {
-    -fx-background-color: #111111;
+    -fx-background-color: panel-d;
 }
 
-.login-label {
-    -fx-color: black;
+.button-gen-dark {
+    -fx-background-color: dark-input;
+    -fx-text-fill:white;
 }
 
-.login-input {
-    -fx-color: black;
+.button-gen-dark:hover {
+    -fx-background-color: dark-hover-input;
+}
+
+.label-gen-dark {
+    -fx-text-fill: white;
+}
+
+.input-gen-dark {
+    -fx-text-fill: white;
+    -fx-background-color: dark-input;
     -fx-border: solid;
     -fx-border-width: 2px;
     -fx-border-radius: 0;
     -fx-border-color: #111111;
 }
 
-.login-button {
-    -fx-border-radius: 0;
-    -fx-border: solid;
-    -fx-border-color: black;
-    -fx-border-width: 2px;
-    -fx-background-color: #999999;
-    -fx-color: black;
+.choice-gen-dark {
+    -fx-background-color: dark-input;
+    -fx-text-fill: white;
 }
 
-.login-button:hover {
-    -fx-background-color: #ffcc33;
-}
-
-.sign-up-button {
-    -fx-border: none;
-    -fx-color: #ffcc33;
-    -fx-font-size: 16px;
+.choice-gen-dark:hover {
+    -fx-background-color: dark-hover-input;
 }

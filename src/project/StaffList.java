@@ -14,17 +14,44 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
  *
  * @author cirla
  */
-public class StaffList extends Window implements Initializable{
+public class StaffList extends Window implements Initializable, Tokens{
     
     @FXML
-    private ListView staffList;
+    private Button addButton;
+
+    @FXML
+    private Button changeButton;
+
+    @FXML
+    private Button deleteButton;
+
+    @FXML
+    private Button goBackButton;
+
+    @FXML
+    private Button inspectButton;
+
+    @FXML
+    private Button optionButton;
+
+    @FXML
+    private AnchorPane parent;
+
+    @FXML
+    private ListView<Staff> staffList;
+
+    @FXML
+    private Label stafflistLabel;
     
     public static Window goBack;
     
@@ -33,8 +60,8 @@ public class StaffList extends Window implements Initializable{
         root = FXMLLoader.load(getClass().getResource("StaffList.fxml"));
         scene = new Scene(root);
         stage = primaryStage;
-        //String css = this.getClass().getResource("general.css").toExternalForm();
-        //scene.getStylesheets().add(css);
+        String css = this.getClass().getResource("general.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setTitle("StaffList");
         stage.setScene(scene);
         stage.show();
@@ -45,6 +72,29 @@ public class StaffList extends Window implements Initializable{
         Enumeration<String> keys = Gym.getStaffList().keys();
         while(keys.hasMoreElements()) {
             staffList.getItems().add(Gym.getStaffList().get(keys.nextElement()));
+        }
+        css();
+    }
+    
+        private void css() {
+        if(isToken("darkmode.ser")) {
+            parent.getStyleClass().add("parent-dark");
+            addButton.getStyleClass().add("button-gen-dark");
+            changeButton.getStyleClass().add("button-gen-dark");
+            deleteButton.getStyleClass().add("button-gen-dark");
+            inspectButton.getStyleClass().add("button-gen-dark");
+            goBackButton.getStyleClass().add("button-gen-dark");
+            optionButton.getStyleClass().add("button-gen-dark");
+            stafflistLabel.getStyleClass().add("label-gen-dark");
+        } else {
+            parent.getStyleClass().add("parent");
+            addButton.getStyleClass().add("button-gen");
+            changeButton.getStyleClass().add("button-gen");
+            deleteButton.getStyleClass().add("button-gen");
+            inspectButton.getStyleClass().add("button-gen");
+            goBackButton.getStyleClass().add("button-gen");
+            optionButton.getStyleClass().add("button-gen");
+            stafflistLabel.getStyleClass().add("label-gen");
         }
     }
 

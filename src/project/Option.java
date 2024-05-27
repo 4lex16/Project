@@ -4,12 +4,13 @@
  */
 package project;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -20,6 +21,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
@@ -29,13 +32,28 @@ import javafx.stage.Stage;
 public class Option extends Window implements Initializable, Tokens{
     
     @FXML
-    private Button inspectButton;
+    private AnchorPane parent;
     
     @FXML
     private Button changeButton;
-    
+
+    @FXML
+    private Button darkModeButton;
+
+    @FXML
+    private Button exitButton;
+
+    @FXML
+    private Button goBackButton;
+
+    @FXML
+    private Button inspectButton;
+
     @FXML
     private Button logoutButton;
+
+    @FXML
+    private Label optionLabel;
     
     public static Window goBack;
     
@@ -44,8 +62,8 @@ public class Option extends Window implements Initializable, Tokens{
         root = FXMLLoader.load(getClass().getResource("Option.fxml"));
         scene = new Scene(root);
         stage = primaryStage;
-        //String css = this.getClass().getResource("general.css").toExternalForm();
-        //scene.getStylesheets().add(css);
+        String css = this.getClass().getResource("general.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setTitle("Option");
         stage.setScene(scene);
         stage.show();
@@ -53,9 +71,35 @@ public class Option extends Window implements Initializable, Tokens{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        css();
+        if (isToken("darkmode.ser")) {
+            darkModeButton.setText("Light Mode");
+        }
         inspectButton.setVisible(isToken("logedin.ser"));
         changeButton.setVisible(isToken("logedin.ser"));
         logoutButton.setVisible(isToken("logedin.ser"));
+    }
+    
+    private void css() {
+        if (isToken("darkmode.ser")) {
+            parent.getStyleClass().add("parent-dark");
+            optionLabel.getStyleClass().add("label-gen-dark");
+            goBackButton.getStyleClass().add("button-gen-dark");
+            exitButton.getStyleClass().add("button-gen-dark");
+            inspectButton.getStyleClass().add("button-gen-dark");
+            changeButton.getStyleClass().add("button-gen-dark");
+            logoutButton.getStyleClass().add("button-gen-dark");
+            darkModeButton.getStyleClass().add("button-gen-dark");
+        } else {
+            parent.getStyleClass().add("parent");
+            optionLabel.getStyleClass().add("label-gen");
+            goBackButton.getStyleClass().add("button-gen");
+            exitButton.getStyleClass().add("button-gen");
+            inspectButton.getStyleClass().add("button-gen");
+            changeButton.getStyleClass().add("button-gen");
+            logoutButton.getStyleClass().add("button-gen");
+            darkModeButton.getStyleClass().add("button-gen");
+        }
     }
     
     public void goBack(ActionEvent event) {
@@ -92,11 +136,17 @@ public class Option extends Window implements Initializable, Tokens{
     
     public void darkmode(ActionEvent event) {
         if (isToken("darkmode.ser")) {
-            System.out.println("lightmode");
             deleteDarkmodeToken();
+            darkModeButton.setText("Dark Mode");
         } else {
-            System.out.println("darkmode");
             createDarkmodeToken();
+            darkModeButton.setText("Light Mode");
+        }
+        try {
+            Option option = new Option();
+            option.create((Stage) ((Node)event.getSource()).getScene().getWindow());
+        } catch (IOException ex) {
+            Logger.getLogger(Option.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     

@@ -5,28 +5,76 @@
 package project;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
  *
  * @author cirla
  */
-public class StaffView extends Window{
+public class StaffView extends Window implements Initializable, Tokens{
+    
+    @FXML
+    private Button gymBalanceButton;
+
+    @FXML
+    private Button memberListButton;
+
+    @FXML
+    private Button optionButton;
+
+    @FXML
+    private AnchorPane parent;
+
+    @FXML
+    private Button staffListButton;
+
+    @FXML
+    private Label staffViewLabel;
     
     @Override
     public void create(Stage primaryStage) throws IOException {
         root = FXMLLoader.load(getClass().getResource("StaffView.fxml"));
         scene = new Scene(root);
         stage = primaryStage;
-        //String css = this.getClass().getResource("general.css").toExternalForm();
-        //scene.getStylesheets().add(css);
+        String css = this.getClass().getResource("general.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setTitle("StaffView");
         stage.setScene(scene);
         stage.show();
+    }
+    
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        css();
+    }
+    
+    private void css() {
+        if(isToken("darkmode.ser")) {
+            parent.getStyleClass().add("parent-dark");
+            gymBalanceButton.getStyleClass().add("button-gen-dark");
+            memberListButton.getStyleClass().add("button-gen-dark");
+            optionButton.getStyleClass().add("button-gen-dark");
+            staffListButton.getStyleClass().add("button-gen-dark");
+            staffViewLabel.getStyleClass().add("label-gen-dark");
+        } else {
+            parent.getStyleClass().add("parent");
+            gymBalanceButton.getStyleClass().add("button-gen");
+            memberListButton.getStyleClass().add("button-gen");
+            optionButton.getStyleClass().add("button-gen");
+            staffListButton.getStyleClass().add("button-gen");
+            staffViewLabel.getStyleClass().add("label-gen");
+        }
     }
     
     public void option(ActionEvent event) {

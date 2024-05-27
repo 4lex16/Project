@@ -13,23 +13,37 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
  *
  * @author cirla
  */
-public class GymBalance extends Window implements Initializable{
+public class GymBalance extends Window implements Initializable, Tokens{
 
     @FXML
     private Label cashLabel;
-    
+
     @FXML
     private Label creditLabel;
-    
+
+    @FXML
+    private Button goBackButton;
+
+    @FXML
+    private Label gymLabel;
+
+    @FXML
+    private Button optionButton;
+
     @FXML
     private Label totalLabel;
+    
+    @FXML
+    private AnchorPane parent;
     
     public static Window goBack;
     
@@ -38,8 +52,8 @@ public class GymBalance extends Window implements Initializable{
         root = FXMLLoader.load(getClass().getResource("GymBalance.fxml"));
         scene = new Scene(root);
         stage = primaryStage;
-        //String css = this.getClass().getResource("general.css").toExternalForm();
-        //scene.getStylesheets().add(css);
+        String css = this.getClass().getResource("general.css").toExternalForm();
+        scene.getStylesheets().add(css);
         stage.setTitle("GymBalance");
         stage.setScene(scene);
         stage.show();
@@ -47,9 +61,30 @@ public class GymBalance extends Window implements Initializable{
     
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        cashLabel.setText(String.format("Gym cash balance : %-4.2f", Gym.getCashBalance()));
-        creditLabel.setText(String.format("Gym credit balance : %-4.2f", Gym.getCreditBalance()));
-        totalLabel.setText(String.format("Gym total balance : %-4.2f", Gym.getTotalBalance()));
+        cashLabel.setText(String.format("Cash Balance :   %10.2f", Gym.getCashBalance()));
+        creditLabel.setText(String.format("Credit Balance : %10.2f", Gym.getCreditBalance()));
+        totalLabel.setText(String.format("Total Balance :   %10.2f", Gym.getTotalBalance()));
+        css();
+    }
+    
+    private void css() {
+        if(isToken("darkmode.ser")) {
+            parent.getStyleClass().add("parent-dark");
+            optionButton.getStyleClass().add("button-gen-dark");
+            goBackButton.getStyleClass().add("button-gen-dark");
+            gymLabel.getStyleClass().add("label-gen-dark");
+            cashLabel.getStyleClass().add("label-gen-dark");
+            creditLabel.getStyleClass().add("label-gen-dark");
+            totalLabel.getStyleClass().add("label-gen-dark");
+        } else {
+            parent.getStyleClass().add("parent");
+            optionButton.getStyleClass().add("button-gen");
+            goBackButton.getStyleClass().add("button-gen");
+            gymLabel.getStyleClass().add("label-gen");
+            cashLabel.getStyleClass().add("label-gen");
+            creditLabel.getStyleClass().add("label-gen");
+            totalLabel.getStyleClass().add("label-gen");
+        }
     }
     
     public void goBack(ActionEvent event) {
