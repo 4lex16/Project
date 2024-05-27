@@ -7,39 +7,52 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.StaffRegister">
+<AnchorPane fx:id="parent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.StaffRegister">
    <children>
-      <Button layoutX="560.0" layoutY="7.0" mnemonicParsing="false" onAction="#option" text="O" />
-      <Button layoutX="205.0" layoutY="345.0" mnemonicParsing="false" onAction="#goBack" text="RETURN" />
-      <Button layoutX="336.0" layoutY="345.0" mnemonicParsing="false" onAction="#register" text="REGISTER" />
-      <Label layoutX="265.0" layoutY="11.0" text="Register Staff" />
-      <HBox layoutX="64.0" layoutY="82.0" prefHeight="236.0" prefWidth="473.0">
+      <Label fx:id="registerLabel" alignment="CENTER" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="600.0" text="Register Staff">
+         <font>
+            <Font size="32.0" />
+         </font></Label>
+      <Button fx:id="optionButton" layoutX="536.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#option" prefHeight="50.0" prefWidth="50.0" text="O">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="goBackButton" layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#goBack" prefHeight="50.0" prefWidth="50.0" text="&lt;">
+         <font>
+            <Font size="18.0" />
+         </font></Button>
+      <Button fx:id="registerButton" layoutX="225.0" layoutY="356.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#register" prefHeight="30.0" prefWidth="150.0" text="REGISTER">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
+      <HBox layoutX="84.0" layoutY="102.0" prefHeight="236.0" prefWidth="473.0">
          <children>
             <VBox prefHeight="239.0" prefWidth="221.0">
                <children>
                   <VBox prefHeight="21.0" prefWidth="277.0">
                      <children>
-                        <Label text="First Name" />
+                        <Label fx:id="firstNameLabel" text="First Name" />
                         <TextField fx:id="firstNameField" />
                      </children>
                   </VBox>
                   <VBox layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="277.0">
                      <children>
-                        <Label text="Last Name" />
+                        <Label fx:id="lastNameLabel" text="Last Name" />
                         <TextField fx:id="lastNameField" prefHeight="0.0" prefWidth="277.0" />
                      </children>
                   </VBox>
                   <VBox>
                      <children>
-                        <Label text="Gender" />
+                        <Label fx:id="genderLabel" text="Gender" />
                         <ChoiceBox fx:id="genderChoiceBox" prefHeight="25.0" prefWidth="214.0" />
                      </children>
                   </VBox>
                   <VBox layoutX="10.0" layoutY="52.0" prefHeight="0.0" prefWidth="277.0">
                      <children>
-                        <Label text="Phone Number" />
-                        <TextField fx:id="phoneNumberField" />
+                        <Label fx:id="phoneLabel" text="Phone Number" />
+                        <TextField fx:id="phoneField" />
                      </children>
                   </VBox>
                </children>
@@ -49,19 +62,19 @@
                <children>
                   <VBox prefHeight="0.0" prefWidth="277.0">
                      <children>
-                        <Label text="Email" />
+                        <Label fx:id="emailLabel" text="Email" />
                         <TextField fx:id="emailField" />
                      </children>
                   </VBox>
-                  <VBox prefHeight="75.0" prefWidth="236.0">
+                  <VBox prefHeight="84.0" prefWidth="227.0">
                      <children>
-                        <Label text="Password" />
+                        <Label fx:id="passwordLabel" text="Password" />
                         <TextField fx:id="passwordField" prefHeight="5.0" prefWidth="236.0" />
                      </children>
                   </VBox>
                   <VBox prefHeight="29.0" prefWidth="236.0">
                      <children>
-                        <Label text="Address" />
+                        <Label fx:id="addressLabel" text="Address" />
                         <TextField fx:id="addressField" />
                      </children>
                   </VBox>

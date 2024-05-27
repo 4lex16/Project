@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -24,7 +23,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class StaffAdd extends Window implements Initializable, Tokens{
+public class StaffAdd extends Window{
 
     @FXML
     private TextField addressField;
@@ -155,19 +154,21 @@ public class StaffAdd extends Window implements Initializable, Tokens{
     }
     
     public void add(ActionEvent event) {
-        Staff newStaff = new Staff(
-                firstNameField.getText(),
-                lastNameField.getText(),
-                genderChoiceBox.getValue(),
-                phoneField.getText(),
-                emailField.getText(),
-                addressField.getText(),
-                passwordField.getText()
-        );
-        if(Gym.getStaffList().get(newStaff.getKey()) == null) {
-            Gym.add(newStaff);
-            Gym.serializeStaffList();
-            goBack(event);
+        if(!(firstNameField.getText().equals("") || lastNameField.getText().equals("") || genderChoiceBox.getValue() == null || phoneField.getText().equals("") || emailField.getText().equals("")|| addressField.getText().equals("")|| passwordField.getText().equals(""))) {
+            Staff newStaff = new Staff(
+                    firstNameField.getText(),
+                    lastNameField.getText(),
+                    genderChoiceBox.getValue(),
+                    phoneField.getText(),
+                    emailField.getText(),
+                    addressField.getText(),
+                    passwordField.getText()
+            );
+            if(Gym.getStaffList().get(newStaff.getKey()) == null) {
+                Gym.add(newStaff);
+                Gym.serializeStaffList();
+                goBack(event);
+            }
         }
     }
 }

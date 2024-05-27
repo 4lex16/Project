@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -25,7 +24,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class MemberAdd extends Window implements Initializable, Tokens {
+public class MemberAdd extends Window{
 
     @FXML
     private TextField addressInput;
@@ -225,24 +224,26 @@ public class MemberAdd extends Window implements Initializable, Tokens {
     }
     
     public void add(ActionEvent event) {
-        Member newMember = new Member(
-                firstNameInput.getText(),
-                lastNameInput.getText(),
-                genderChoiceBox.getValue(),
-                phoneInput.getText(),
-                emailInput.getText(),
-                addressInput.getText(),
-                passwordInput.getText(),
-                membershipChoiceBox.getValue(),
-                paymentMethodChoiceBox.getValue(),
-                timeChoiceBox.getValue(),
-                creditInput.getText(),
-                cvvInput.getText(),
-                expInput.getText()
-        );
-        Gym.add(newMember);
-        Gym.serializeMemberList();
-        goBack(event);
+        if(!(firstNameInput.getText().equals("") || lastNameInput.getText().equals("") || genderChoiceBox.getValue() == null || phoneInput.getText().equals("") || emailInput.getText().equals("") || addressInput.getText().equals("") || passwordInput.getText().equals("") || membershipChoiceBox.getValue() == null || paymentMethodChoiceBox.getValue() == null || timeChoiceBox.getValue() == null || creditInput.getText().equals("") ||cvvInput.getText().equals("") || expInput.getText().equals(""))) {
+            Member newMember = new Member(
+                    firstNameInput.getText(),
+                    lastNameInput.getText(),
+                    genderChoiceBox.getValue(),
+                    phoneInput.getText(),
+                    emailInput.getText(),
+                    addressInput.getText(),
+                    passwordInput.getText(),
+                    membershipChoiceBox.getValue(),
+                    paymentMethodChoiceBox.getValue(),
+                    timeChoiceBox.getValue(),
+                    creditInput.getText(),
+                    cvvInput.getText(),
+                    expInput.getText()
+            );
+            Gym.add(newMember);
+            Gym.serializeMemberList();
+            goBack(event);
+        }
     }
     
     public void payCredit(ActionEvent event) {

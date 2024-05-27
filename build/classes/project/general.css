@@ -72,10 +72,10 @@
 }
 
 .choice-gen-dark {
-    -fx-background-color: dark-input;
+    -fx-background-color: light-input;
     -fx-text-fill: white;
 }
 
 .choice-gen-dark:hover {
-    -fx-background-color: dark-hover-input;
+    -fx-background-color: light-hover-input;
 }

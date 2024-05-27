@@ -26,7 +26,7 @@ public class Staff extends User{
         
     }
     
-    public String csv() {
-        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s", uuid, firstName, lastName, gender, phoneNumber, email, address, password, type);
+    public String exportCSV() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s\n", uuid, firstName, lastName, gender, phoneNumber, email, address, password, type);
     }
 }

@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -23,7 +22,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class MemberList extends Window implements Initializable, Tokens{
+public class MemberList extends Window{
     
     @FXML
     private Button addButton;
@@ -146,7 +145,6 @@ public class MemberList extends Window implements Initializable, Tokens{
         if(member!=null) {
             member.removePaid();
             Gym.remove(member);
-            Gym.serializeMemberList();
             memberList.getItems().clear();
             memberList.getItems().addAll(Gym.getMemberList());
         }

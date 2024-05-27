@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,7 +21,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class GymBalance extends Window implements Initializable, Tokens{
+public class GymBalance extends Window {
 
     @FXML
     private Label cashLabel;

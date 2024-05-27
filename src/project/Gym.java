@@ -13,6 +13,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Dictionary;
+import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -40,21 +41,25 @@ public class Gym {
     
     public static double addCash(double value) {
         cashBalance += value;
+        serializeCash();
         return cashBalance;
     }
     
     public static double removeCash(double value) {
         cashBalance -= value;
+        serializeCash();
         return cashBalance;
     }
     
     public static double addCredit(double value) {
         creditBalance += value;
+        serializeCash();
         return creditBalance;
     }
     
     public static double removeCredit(double value) {
         creditBalance -= value;
+        serializeCash();
         return creditBalance;
     }    
     
@@ -68,29 +73,59 @@ public class Gym {
     
     public static void add(Member m) {
         memberList.add(m);
+        serializeMemberList();
+        writeMemberFile();
     }
     
     public static void remove(Member m) {
         memberList.remove(m);
+        serializeMemberList();
+        writeMemberFile();
     }
     
     public static void add(Staff s) {
         staffList.put(s.getKey(), s);
+        serializeStaffList();
+        writeStaffFile();
     }
     
     public static void remove(Staff s) {
         staffList.remove(s.getKey());
+        serializeStaffList();
+        writeStaffFile();
     }
     
-    public static void writeMemberFile(String path) {
-        File data = new File(path);
-        String str = "uuid,firstName,lastName,gender,phoneNumber,email,address,password,type,memberShip,paymentMethod\n";
+    public static void writeMemberFile() {
+        File data = new File("memberlist.csv");
+        String str = "uuid,firstName,lastName,gender,phoneNumber,email,address,password,type,memberShip,paymentMethod,time,creditCardNumber,cvv,expDate\n";
         try(FileWriter fw = new FileWriter(data)) {
-            for(Member m: memberList) str += m.toString();
+            for(Member m: memberList) str += m.exportCSV();
             fw.write(str);
         } catch(IOException ioe) {
             System.out.println("File not found while writing");
         }
+    }
+    
+    public static void readMemberFile(String path) {
+        // Not implemented due to short time constraints
+    }
+    
+    public static void writeStaffFile() {
+        File data = new File("stafflist.csv");
+        String str = "uuid,firstName,lastName,gender,phoneNumber,email,address,password,type\n";
+        try(FileWriter fw = new FileWriter(data)) {
+            Enumeration<String> keys = staffList.keys();
+            while(keys.hasMoreElements()) {
+                str += staffList.get(keys.nextElement()).exportCSV();
+            }
+            fw.write(str);
+        } catch(IOException ioe) {
+            System.out.println("File not found while writing");
+        }
+    }
+    
+    public static void readStaffFile(String path) {
+        // Not implemented due to short time constraints
     }
     
     public static void serializeMemberList() {

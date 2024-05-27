@@ -22,6 +22,10 @@ public class Member extends User{
             this.creditCardNumber = creditCardNumber;
             this.cvv = cvv;
             this.expDate = expDate;
+        } else {
+            this.creditCardNumber = "";
+            this.cvv = "";
+            this.expDate = "";
         }
         
         if(this.memberShip.equalsIgnoreCase("regular")) {
@@ -46,6 +50,10 @@ public class Member extends User{
             this.creditCardNumber = creditCardNumber;
             this.cvv = cvv;
             this.expDate = expDate;
+        } else {
+            this.creditCardNumber = "";
+            this.cvv = "";
+            this.expDate = "";
         }
         addPaid();
     }
@@ -104,7 +112,7 @@ public class Member extends User{
         return String.format("%s %s %s %s", firstName, lastName, gender, memberShip);
     }
     
-    public String previewLable() {
-        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s", uuid, firstName, lastName, gender, phoneNumber, email, address, password, type, memberShip, paymentMethod, time, creditCardNumber, cvv, expDate);
+    public String exportCSV() {
+        return String.format("%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s\n", uuid, firstName, lastName, gender, phoneNumber, email, address, password, type, memberShip, paymentMethod, time, creditCardNumber, cvv, expDate);
     }
 }

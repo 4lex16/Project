@@ -14,7 +14,6 @@ import java.util.logging.Logger;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -29,7 +28,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class Option extends Window implements Initializable, Tokens{
+public class Option extends Window{
     
     @FXML
     private AnchorPane parent;

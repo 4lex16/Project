@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -26,7 +25,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class StaffChange extends Window implements Initializable, Tokens{
+public class StaffChange extends Window{
 
 
     @FXML
@@ -167,21 +166,23 @@ public class StaffChange extends Window implements Initializable, Tokens{
     }
     
     public void change(ActionEvent event) {
-        Staff newStaff = new Staff(
-                tempuuid,
-                firstNameField.getText(),
-                lastNameField.getText(),
-                genderChoiceBox.getValue(),
-                phoneField.getText(),
-                emailField.getText(),
-                addressField.getText(),
-                passwordField.getText()
-        );
-        if(newStaff.getKey().equals(staff.getKey()) || Gym.getStaffList().get(newStaff.getKey()) == null) {
-            Gym.remove(staff);
-            Gym.add(newStaff);
-            if(isStaffLogin) createLoginToken();
-            goBack(event);
+        if(!(firstNameField.getText().equals("") || lastNameField.getText().equals("") || genderChoiceBox.getValue() == null || phoneField.getText().equals("") || emailField.getText().equals("")|| addressField.getText().equals("")|| passwordField.getText().equals(""))) {
+            Staff newStaff = new Staff(
+                    tempuuid,
+                    firstNameField.getText(),
+                    lastNameField.getText(),
+                    genderChoiceBox.getValue(),
+                    phoneField.getText(),
+                    emailField.getText(),
+                    addressField.getText(),
+                    passwordField.getText()
+            );
+            if(newStaff.getKey().equals(staff.getKey()) || Gym.getStaffList().get(newStaff.getKey()) == null) {
+                Gym.remove(staff);
+                Gym.add(newStaff);
+                if(isStaffLogin) createLoginToken();
+                goBack(event);
+            }
         }
     }
     

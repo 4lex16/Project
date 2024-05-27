@@ -5,6 +5,7 @@
 package project;
 
 import java.io.IOException;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -13,7 +14,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public abstract class Window {
+public abstract class Window implements Tokens, Initializable{
     
     protected Parent root;
     protected Scene scene;

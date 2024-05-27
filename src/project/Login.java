@@ -12,7 +12,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -27,7 +26,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class Login extends Window implements Initializable, Tokens{
+public class Login extends Window{
     
     @FXML
     private Button optionButton;

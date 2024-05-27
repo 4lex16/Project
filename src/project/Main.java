@@ -14,7 +14,6 @@ import javafx.stage.Stage;
  * @author cirla
  */
 public class Main extends Application{
-    static long starttime;
     /**
      * @param args the command line arguments
      */

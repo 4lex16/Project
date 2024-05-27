@@ -23,7 +23,7 @@ import javafx.stage.Stage;
  *
  * @author cirla
  */
-public class MemberInspect extends Window implements Initializable, Tokens{
+public class MemberInspect extends Window{
 
     @FXML
     private Label addressInput;
